@@ -36,6 +36,7 @@ namespace BackEndProject.Areas.Admin.Controllers
         public IActionResult Create(HeaderSlider slider)
         {
             if (!ModelState.IsValid) return View();
+            List<HeaderSlider> OrderList = _context.Sliders.Where(s => s.Order == slider.Order).ToList();
             if (slider.ImageFile == null)
             {
                 ModelState.AddModelError("ImageFile", "Please insert an image");
@@ -51,30 +52,35 @@ namespace BackEndProject.Areas.Admin.Controllers
                 ModelState.AddModelError("ImageFile", "Please insert a valid image type such as jpg,png,jpeg etc");
                 return View();
             }
-            //if (_context.Sliders.Contains(slider.Order,)
-            //{
-
-            //}
+            foreach (HeaderSlider item in OrderList)
+            {
+                if (item.Order == slider.Order)
+                {
+                    ModelState.AddModelError("Order", "Order number is taken.Please enter different order");
+                    return View();
+                }
+            }
             slider.Image = slider.ImageFile.SaveImg(_env.WebRootPath, "assets/img/slider");
             _context.Sliders.Add(slider);
             _context.SaveChanges();
-           return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Edit(int id)
         {
-            HeaderSlider slider = _context.Sliders.FirstOrDefault(s=>s.Id==id);
+            HeaderSlider slider = _context.Sliders.FirstOrDefault(s => s.Id == id);
             if (slider == null) return NotFound();
             return View(slider);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(HeaderSlider slider)
+        public IActionResult Edit(HeaderSlider slider, int id)
         {
             HeaderSlider existSlider = _context.Sliders.FirstOrDefault(s => s.Id == slider.Id);
+            List<HeaderSlider> OrderList = _context.Sliders.Where(s => s.Order == slider.Order && s.Id == id).ToList();
             if (existSlider == null) return NotFound();
             if (!ModelState.IsValid) return View();
-            if (slider.ImageFile!=null)
+            if (slider.ImageFile != null)
             {
                 if (!slider.ImageFile.IsImage())
                 {
@@ -89,8 +95,20 @@ namespace BackEndProject.Areas.Admin.Controllers
                 Helpers.Helper.DeleteImg(_env.WebRootPath, "/assets/img/slider", existSlider.Image);
                 existSlider.Image = slider.ImageFile.SaveImg(_env.WebRootPath, "assets/img/slider");
             }
+            if (existSlider.Id != id)
+            {
+                if (existSlider.Order != slider.Order)
+                {
+                    ModelState.AddModelError("Order", "Order number is taken.Please enter different order");
+                    return View(existSlider);
+                }
+            }
+
+
+
             existSlider.Title = slider.Title;
             existSlider.Description = slider.Description;
+            existSlider.Order = slider.Order;
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
