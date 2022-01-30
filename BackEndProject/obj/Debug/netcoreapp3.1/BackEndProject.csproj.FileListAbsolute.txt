@@ -158,3 +158,13 @@ C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcorea
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Slider\Create.cshtml.g.cs
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Slider\Index.cshtml.g.cs
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Slider\Edit.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Setting\Index.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Setting\Edit.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Tag\Index.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Tag\Create.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Tag\Edit.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Index.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Create.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Edit.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Course\Index.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Course\Create.cshtml.g.cs

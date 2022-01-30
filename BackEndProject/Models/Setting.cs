@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -43,6 +45,10 @@ namespace BackEndProject.Models
         public string AboutViewUrl { get; set; }
         [StringLength(maximumLength: 200)]
         public string VideoTourUrl { get; set; }
+        [NotMapped]
+        public IFormFile ImageLogoFile { get; set; }
+        [NotMapped]
+        public IFormFile ImageAboutFile { get; set; }
 
         public List<FooterSocial> FooterSocials { get; set; }
     }

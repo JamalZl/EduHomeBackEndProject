@@ -19,6 +19,7 @@ namespace BackEndProject.Models
         [StringLength(maximumLength:200)]
         public string Image { get; set; }
         public int Order { get; set; }
+
         [NotMapped]
         public IFormFile ImageFile { get; set; }
     }

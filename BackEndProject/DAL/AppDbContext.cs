@@ -32,6 +32,8 @@ namespace BackEndProject.DAL
         public DbSet<NoticeBoard> NoticeBoards { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<HeaderSlider> Sliders { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<CourseTags> CourseTags { get; set; }
 
 
     }

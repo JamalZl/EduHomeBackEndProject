@@ -126,6 +126,10 @@ namespace BackEndProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ClassDuration")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
                     b.Property<double>("CourseFee")
                         .HasColumnType("float");
 
@@ -516,7 +520,7 @@ namespace BackEndProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tag");
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("BackEndProject.Models.Teacher", b =>
@@ -646,7 +650,7 @@ namespace BackEndProject.Migrations
             modelBuilder.Entity("BackEndProject.Models.CourseFeature", b =>
                 {
                     b.HasOne("BackEndProject.Models.Course", "Course")
-                        .WithMany()
+                        .WithMany("CourseFeatures")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

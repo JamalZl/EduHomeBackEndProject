@@ -12,6 +12,8 @@ namespace BackEndProject.Models
         public DateTime StartTime { get; set; }
         [StringLength(maximumLength:50)]
         public string Duration { get; set; }
+        //[StringLength(maximumLength: 50)]
+        //public string ClassDuration { get; set; }
         [StringLength(maximumLength:50)]
         public string SkillLevel { get; set; }
         [StringLength(maximumLength:50)]

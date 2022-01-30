@@ -77,7 +77,7 @@ namespace BackEndProject.Areas.Admin.Controllers
         public IActionResult Edit(HeaderSlider slider, int id)
         {
             HeaderSlider existSlider = _context.Sliders.FirstOrDefault(s => s.Id == slider.Id);
-            List<HeaderSlider> OrderList = _context.Sliders.Where(s => s.Order == slider.Order && s.Id == id).ToList();
+            HeaderSlider Order = _context.Sliders.Where(s => s.Order == slider.Order).FirstOrDefault();
             if (existSlider == null) return NotFound();
             if (!ModelState.IsValid) return View();
             if (slider.ImageFile != null)
@@ -95,17 +95,11 @@ namespace BackEndProject.Areas.Admin.Controllers
                 Helpers.Helper.DeleteImg(_env.WebRootPath, "/assets/img/slider", existSlider.Image);
                 existSlider.Image = slider.ImageFile.SaveImg(_env.WebRootPath, "assets/img/slider");
             }
-            if (existSlider.Id != id)
+            if (Order.Id!=id)
             {
-                if (existSlider.Order != slider.Order)
-                {
-                    ModelState.AddModelError("Order", "Order number is taken.Please enter different order");
-                    return View(existSlider);
-                }
+                ModelState.AddModelError("Order", "Order number is taken.Please enter different order");
+                return View(existSlider);
             }
-
-
-
             existSlider.Title = slider.Title;
             existSlider.Description = slider.Description;
             existSlider.Order = slider.Order;
