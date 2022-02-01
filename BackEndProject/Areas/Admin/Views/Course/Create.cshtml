@@ -1,8 +1,8 @@
-﻿@{ ViewData["Title"] = "Create"; }
-@model Course
+﻿@model Course
+@{ ViewData["Title"] = "Create"; }
 
 <div class="container mt-3">
-    <h2>Create slider section</h2>
+    <h2>Create Course section</h2>
     <form method="post" class="mt-3" enctype="multipart/form-data">
         <div class="mb-3">
             <label asp-for="@Model.ImageFormFile" class="form-label">Enter image</label>
@@ -51,34 +51,34 @@
             Course Features
         </h3>
         <div class="mt-3">
-            <label asp-for="@Model.CourseFeatures.FirstOrDefault().StartTime" class="form-label">Enter start date</label>
-            <input asp-for="@Model.CourseFeatures.FirstOrDefault().StartTime" class="form-control">
-            <span class="mt-4 text text-danger" asp-validation-for="@Model.CourseFeatures.FirstOrDefault().StartTime"></span>
+            <label asp-for="@Model.CourseFeatures.StartTime" class="form-label">Enter start date</label>
+            <input asp-for="@Model.CourseFeatures.StartTime" class="form-control">
+            <span class="mt-4 text text-danger" asp-validation-for="@Model.CourseFeatures.StartTime"></span>
         </div>
         <div class="mt-3">
-            <label asp-for="@Model.CourseFeatures.FirstOrDefault().Duration" class="form-label">Enter duration</label>
-            <input asp-for="@Model.CourseFeatures.FirstOrDefault().Duration" class="form-control">
-            <span class="mt-4 text text-danger" asp-validation-for="@Model.CourseFeatures.FirstOrDefault().Duration"></span>
+            <label asp-for="@Model.CourseFeatures.Duration" class="form-label">Enter duration</label>
+            <input asp-for="@Model.CourseFeatures.Duration" class="form-control">
+            <span class="mt-4 text text-danger" asp-validation-for="@Model.CourseFeatures.Duration"></span>
         </div>
         <div class="mt-3">
-            <label asp-for="@Model.CourseFeatures.FirstOrDefault().SkillLevel" class="form-label">Enter skill level</label>
-            <input asp-for="@Model.CourseFeatures.FirstOrDefault().SkillLevel" class="form-control">
-            <span class="mt-4 text text-danger" asp-validation-for="@Model.CourseFeatures.FirstOrDefault().SkillLevel"></span>
+            <label asp-for="@Model.CourseFeatures.SkillLevel" class="form-label">Enter skill level</label>
+            <input asp-for="@Model.CourseFeatures.SkillLevel" class="form-control">
+            <span class="mt-4 text text-danger" asp-validation-for="@Model.CourseFeatures.SkillLevel"></span>
         </div>
         <div class="mt-3">
-            <label asp-for="@Model.CourseFeatures.FirstOrDefault().Language" class="form-label">Enter Language</label>
-            <input asp-for="@Model.CourseFeatures.FirstOrDefault().Language" class="form-control">
-            <span class="mt-4 text text-danger" asp-validation-for="@Model.CourseFeatures.FirstOrDefault().Language"></span>
+            <label asp-for="@Model.CourseFeatures.Language" class="form-label">Enter Language</label>
+            <input asp-for="@Model.CourseFeatures.Language" class="form-control">
+            <span class="mt-4 text text-danger" asp-validation-for="@Model.CourseFeatures.Language"></span>
         </div>
         <div class="mt-3">
-            <label asp-for="@Model.CourseFeatures.FirstOrDefault().StudentCount" class="form-label">Enter student count</label>
-            <input asp-for="@Model.CourseFeatures.FirstOrDefault().StudentCount" class="form-control">
-            <span class="mt-4 text text-danger" asp-validation-for="@Model.CourseFeatures.FirstOrDefault().StudentCount"></span>
+            <label asp-for="@Model.CourseFeatures.StudentCount" class="form-label">Enter student count</label>
+            <input asp-for="@Model.CourseFeatures.StudentCount" class="form-control">
+            <span class="mt-4 text text-danger" asp-validation-for="@Model.CourseFeatures.StudentCount"></span>
         </div>
         <div class="mt-3">
-            <label asp-for="@Model.CourseFeatures.FirstOrDefault().CourseFee" class="form-label">Enter course fee</label>
-            <input asp-for="@Model.CourseFeatures.FirstOrDefault().CourseFee" class="form-control">
-            <span class="mt-4 text text-danger" asp-validation-for="@Model.CourseFeatures.FirstOrDefault().CourseFee"></span>
+            <label asp-for="@Model.CourseFeatures.CourseFee" class="form-label">Enter course fee</label>
+            <input asp-for="@Model.CourseFeatures.CourseFee" class="form-control">
+            <span class="mt-4 text text-danger" asp-validation-for="@Model.CourseFeatures.CourseFee"></span>
         </div>
         <div class="d-flex mt-4 mb-5">
             <button type="submit" class="btn btn-primary">Submit</button>

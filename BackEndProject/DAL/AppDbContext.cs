@@ -34,7 +34,7 @@ namespace BackEndProject.DAL
         public DbSet<HeaderSlider> Sliders { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<CourseTags> CourseTags { get; set; }
-
-
+        public DbSet<Speaker> Speakers { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
     }
 }

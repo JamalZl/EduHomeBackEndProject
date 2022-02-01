@@ -16,7 +16,6 @@ namespace BackEndProject.Models
         [StringLength(maximumLength: 500)]
 
         public string Description { get; set; }
-        [StringLength(maximumLength: 50)]
         public string Image { get; set; }
         [StringLength(maximumLength: 450)]
 
@@ -29,11 +28,12 @@ namespace BackEndProject.Models
         public string Certification { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public List<CourseFeature> CourseFeatures { get; set; }
+        public CourseFeature CourseFeatures { get; set; }
         [NotMapped]
         public List<int> TagIds { get; set; }
         public List<CourseTags> CourseTags { get; set; }
         [NotMapped]
         public IFormFile ImageFormFile { get; set; }
+
     }
 }

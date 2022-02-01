@@ -1,0 +1,100 @@
+﻿@model Teacher
+@{ ViewData["Title"] = "Create"; }
+
+<div class="container mt-3">
+    <h2>Create slider section</h2>
+    <form method="post" class="mt-3" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label asp-for="@Model.ImageFile" class="form-label">Enter image</label>
+            <input asp-for="@Model.ImageFile" accept="image/*" class="form-control">
+            <span style="display:inline-block; margin-top:15px" class="mt-4 text text-danger" asp-validation-for="@Model.ImageFile"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Name" class="form-label">Enter Name</label>
+            <input asp-for="@Model.Name" class="form-control">
+            <span style="display:inline-block; margin-top:15px" class="mt-4 text text-danger" asp-validation-for="@Model.Name"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Surname" class="form-label">Enter Surname</label>
+            <input asp-for="@Model.Surname" class="form-control">
+            <span style="display:inline-block; margin-top:15px" class="mt-4 text text-danger" asp-validation-for="@Model.Surname"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.About" class="form-label">About Teacher</label>
+            <input asp-for="@Model.About" class="form-control">
+            <span style="display:inline-block; margin-top:15px" class="mt-4 text text-danger" asp-validation-for="@Model.About"></span>
+        </div>
+        <div class="mt-3">
+            <label asp-for="@Model.Degree" class="form-label">Enter Degree</label>
+            <input asp-for="@Model.Degree" class="form-control">
+            <span style="display:inline-block; margin-top:15px" class="mt-4 text text-danger" asp-validation-for="@Model.Degree"></span>
+        </div>
+        <div class="mt-3">
+            <label asp-for="@Model.Experience" class="form-label">Enter Experience</label>
+            <input asp-for="@Model.Experience" class="form-control">
+            <span style="display:inline-block; margin-top:15px" class="mt-4 text text-danger" asp-validation-for="@Model.Experience"></span>
+        </div>
+        <div class="mt-3">
+            <label asp-for="@Model.Mail" class="form-label">Enter Mail</label>
+            <input asp-for="@Model.Mail" class="form-control">
+            <span style="display:inline-block; margin-top:15px" class="mt-4 text text-danger" asp-validation-for="@Model.Mail"></span>
+        </div>
+        <div class="mt-3">
+            <label asp-for="@Model.PhoneNumber" class="form-label">Enter Phone Number</label>
+            <input asp-for="@Model.PhoneNumber" class="form-control">
+            <span style="display:inline-block; margin-top:15px" class="mt-4 text text-danger" asp-validation-for="@Model.PhoneNumber"></span>
+        </div>
+        <div class="mt-3">
+            <label asp-for="@Model.FacebookUrl" class="form-label">Enter Facebook Url</label>
+            <input asp-for="@Model.FacebookUrl" class="form-control">
+            <span style="display:inline-block; margin-top:15px" class="mt-4 text text-danger" asp-validation-for="@Model.FacebookUrl"></span>
+        </div>
+        <div class="mt-3">
+            <label asp-for="@Model.VimeoUrl" class="form-label">Enter Vimeo Url</label>
+            <input asp-for="@Model.VimeoUrl" class="form-control">
+            <span style="display:inline-block; margin-top:15px" class="mt-4 text text-danger" asp-validation-for="@Model.VimeoUrl"></span>
+        </div>
+        <div class="mt-3">
+            <label asp-for="@Model.TwitterUrl" class="form-label">Enter Twitter Url</label>
+            <input asp-for="@Model.TwitterUrl" class="form-control">
+            <span style="display:inline-block; margin-top:15px" class="mt-4 text text-danger" asp-validation-for="@Model.TwitterUrl"></span>
+        </div>
+        <div class="mt-3">
+            <label asp-for="@Model.PinterestUrl" class="form-label">Enter Pinterest Url</label>
+            <input asp-for="@Model.PinterestUrl" class="form-control">
+            <span style="display:inline-block; margin-top:15px" class="mt-4 text text-danger" asp-validation-for="@Model.PinterestUrl"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.PositionId" class="form-label">Select Position</label>
+            <select asp-for="@Model.PositionId" class="form-select" asp-items="@(new SelectList(ViewBag.Positions,"Id","Name"))">
+                <option value="0">Select category</option>
+            </select>
+            <span style="display:inline-block; margin-top:15px" class="mt-2 text text-danger" asp-validation-for="@Model.PhoneNumber"></span>
+        </div>
+        <div class="mb-3 mt-3">
+            <label asp-for="@Model.FacultyIds" class="form-label">Select Faculties</label>
+            <select asp-for="@Model.FacultyIds" class="form-select" asp-items="@(new SelectList(ViewBag.Faculties,"Id","Name"))">
+            </select>
+            <span style="display:inline-block; margin-top:15px" class="mt-2 text text-danger" asp-validation-for="@Model.FacultyIds"></span>
+        </div>
+        <div class="mb-3 mt-3">
+            <label asp-for="@Model.HobbyIds" class="form-label">Select Hobbies</label>
+            <select asp-for="@Model.HobbyIds" class="form-select" asp-items="@(new SelectList(ViewBag.Hobbies,"Id","Name"))">
+            </select>
+            <span style="display:inline-block; margin-top:15px" class="mt-2 text text-danger" asp-validation-for="@Model.HobbyIds"></span>
+        </div>
+        <div class="d-flex mt-4 mb-5">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a asp-controller="teacher" asp-action="index" class="btn btn-dark btn-icon-text mx-3">
+                Go to back
+            </a>
+        </div>
+    </form>
+
+</div>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
+s

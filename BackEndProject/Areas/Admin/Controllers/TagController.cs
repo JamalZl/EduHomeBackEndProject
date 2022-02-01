@@ -33,7 +33,7 @@ namespace BackEndProject.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Tag tag)
+        public IActionResult Create(Tag tag,int id)
         {
             if (!ModelState.IsValid) return View();
             if (tag.Name==null)
@@ -44,7 +44,7 @@ namespace BackEndProject.Areas.Admin.Controllers
             List<Tag> tagNames = _context.Tags.Where(t => t.Name == tag.Name).ToList();
             foreach (Tag item in tagNames)
             {
-                if (item.Name==tag.Name)
+                if (item.Name.ToLower().Trim()==tag.Name.ToLower().Trim())
                 {
                     ModelState.AddModelError("Name", "Tag is exist in database.Please enter different tag name");
                     return View();
@@ -62,18 +62,18 @@ namespace BackEndProject.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Tag tagModel,int id)
+        public IActionResult Edit(int id, Tag tagModel)
         {
-            if (!ModelState.IsValid) return View();
-            Tag existTag = _context.Tags.FirstOrDefault(t => t.Id == tagModel.Id);
-            Tag nameControl = _context.Tags.Where(s => s.Name == tagModel.Name).FirstOrDefault();
-            if (existTag == null) return NotFound();
             if (tagModel.Name == null)
             {
                 ModelState.AddModelError("Name", "Enter a tag name");
                 return View(tagModel);
             }
-            if (nameControl.Id!=id)
+            Tag nameControl = _context.Tags.FirstOrDefault(t => t.Name.ToLower().Trim() == tagModel.Name.ToLower().Trim());
+            if (!ModelState.IsValid) return View();
+            Tag existTag = _context.Tags.FirstOrDefault(t => t.Id == tagModel.Id);
+            if (existTag == null) return NotFound();
+            if (nameControl!=null && nameControl.Id!=id)
             {
                 ModelState.AddModelError("Name", "Tag is exist in database.Please enter different tag name");
                 return View(existTag);

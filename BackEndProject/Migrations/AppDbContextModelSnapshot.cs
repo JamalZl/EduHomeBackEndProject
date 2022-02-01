@@ -105,8 +105,7 @@ namespace BackEndProject.Migrations
                         .HasMaxLength(500);
 
                     b.Property<string>("Image")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(50)")
@@ -137,8 +136,7 @@ namespace BackEndProject.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Duration")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Language")
                         .HasColumnType("nvarchar(50)")
@@ -156,7 +154,8 @@ namespace BackEndProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseId");
+                    b.HasIndex("CourseId")
+                        .IsUnique();
 
                     b.ToTable("CourseFeatures");
                 });
@@ -505,7 +504,7 @@ namespace BackEndProject.Migrations
 
                     b.HasIndex("PositionId1");
 
-                    b.ToTable("Speaker");
+                    b.ToTable("Speakers");
                 });
 
             modelBuilder.Entity("BackEndProject.Models.Tag", b =>
@@ -542,6 +541,9 @@ namespace BackEndProject.Migrations
                         .HasColumnType("nvarchar(90)")
                         .HasMaxLength(90);
 
+                    b.Property<string>("FacebookUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
@@ -558,6 +560,9 @@ namespace BackEndProject.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<string>("PinterestUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("PositionId")
                         .HasColumnType("int");
 
@@ -565,11 +570,17 @@ namespace BackEndProject.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<string>("TwitterUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VimeoUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PositionId");
 
-                    b.ToTable("Teacher");
+                    b.ToTable("Teachers");
                 });
 
             modelBuilder.Entity("BackEndProject.Models.TeacherFaculty", b =>
@@ -650,8 +661,8 @@ namespace BackEndProject.Migrations
             modelBuilder.Entity("BackEndProject.Models.CourseFeature", b =>
                 {
                     b.HasOne("BackEndProject.Models.Course", "Course")
-                        .WithMany("CourseFeatures")
-                        .HasForeignKey("CourseId")
+                        .WithOne("CourseFeatures")
+                        .HasForeignKey("BackEndProject.Models.CourseFeature", "CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

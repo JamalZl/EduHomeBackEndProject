@@ -44,7 +44,7 @@ namespace BackEndProject.Areas.Admin.Controllers
             List<Category> categories = _context.Categories.Where(c => c.Name == category.Name).ToList();
             foreach (Category item in categories)
             {
-                if (item.Name==category.Name)
+                if (item.Name.ToLower().Trim()==category.Name.ToLower().Trim())
                 {
                     ModelState.AddModelError("Name", "Category is exist in database.Please enter different category name");
                     return View();
@@ -64,18 +64,18 @@ namespace BackEndProject.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Category category,int id)
         {
-            if (!ModelState.IsValid) return View();
-            Category existCategory = _context.Categories.FirstOrDefault(c => c.Id == category.Id);
-            Category nameControl = _context.Categories.Where(c => c.Name == category.Name).FirstOrDefault();
-            if (existCategory == null) return NotFound();
             if (category.Name == null)
             {
                 ModelState.AddModelError("Name", "Enter a category name");
                 return View(category);
             }
-            if (nameControl.Id != id)
+            Category nameControl = _context.Categories.FirstOrDefault(t => t.Name.ToLower().Trim() == category.Name.ToLower().Trim());
+            if (!ModelState.IsValid) return View();
+            Category existCategory = _context.Categories.FirstOrDefault(c => c.Id == category.Id);
+            if (existCategory == null) return NotFound();
+            if (nameControl != null && nameControl.Id != id)
             {
-                ModelState.AddModelError("Name", "Category is exist in database.Please enter different category name");
+                ModelState.AddModelError("Name", "Tag is exist in database.Please enter different category name");
                 return View(existCategory);
             }
             existCategory.Name = category.Name;
