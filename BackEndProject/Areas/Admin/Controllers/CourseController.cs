@@ -25,7 +25,7 @@ namespace BackEndProject.Areas.Admin.Controllers
         {
             ViewBag.TotalPage = Math.Ceiling((decimal)_context.Courses.Count() / 3);
             ViewBag.CurrentPage = page;
-            List<Course> courses = _context.Courses.Skip((page-1)*3).Take(3).ToList();
+            List<Course> courses = _context.Courses.Include(c=>c.Category).Skip((page-1)*3).Take(3).ToList();
             return View(courses);
         }
         public IActionResult Create()
@@ -67,11 +67,6 @@ namespace BackEndProject.Areas.Admin.Controllers
                     };
                     course.CourseTags.Add(courseTags);
                 }
-            }
-            if (course.Name==null)
-            {
-                ModelState.AddModelError("Name", "Please enter a name");
-                return View();
             }
             if (course.ImageFormFile == null)
             {
@@ -129,11 +124,6 @@ namespace BackEndProject.Areas.Admin.Controllers
                 Helpers.Helper.DeleteImg(_env.WebRootPath, "/assets/img/course", existedCourse.Image);
                 existedCourse.Image = course.ImageFormFile.SaveImg(_env.WebRootPath, "assets/img/course");
             }
-            if (course.Name == null)
-            {
-                ModelState.AddModelError("Name", "Please enter a name");
-                return View(existedCourse);
-            }
             if (course.CategoryId==0)
             {
                 ModelState.AddModelError("CategoryId", "Please select at least one category");
@@ -168,7 +158,6 @@ namespace BackEndProject.Areas.Admin.Controllers
                 ModelState.AddModelError("TagIds", "Please select at least one tag");
                 return View(existedCourse);
             }
-            existedCourse.Name = course.Name;
             existedCourse.Description = course.Description;
             existedCourse.About = course.About;
             existedCourse.Apply = course.Apply;

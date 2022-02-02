@@ -2,6 +2,7 @@
 using BackEndProject.Models;
 using BackEndProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,10 @@ namespace BackEndProject.Controllers
             {
                 Setting = _context.Settings.FirstOrDefault(),
                 NoticeBoards = _context.NoticeBoards.ToList(),
-                Sliders = _context.Sliders.ToList()
+                Sliders = _context.Sliders.ToList(),
+                Courses = _context.Courses.Include(c => c.Category).ToList(),
+                Events = _context.Events.ToList(),
+                Blogs = _context.Blogs.ToList()
             };
             return View(homeVM);
         }

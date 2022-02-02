@@ -199,3 +199,6 @@ C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcorea
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Event\Index.cshtml.g.cs
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Event\Create.cshtml.g.cs
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Event\Edit.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CoursePartialView.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EventPartialView.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BlogPartialView.cshtml.g.cs

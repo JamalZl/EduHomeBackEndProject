@@ -120,8 +120,8 @@ namespace BackEndProject.Areas.Admin.Controllers
                     ModelState.AddModelError("ImageFile", "Image size can not be more than 2MB");
                     return View(existEvent);
                 }
-                Helpers.Helper.DeleteImg(_env.WebRootPath, "/assets/img/teacher", existEvent.Image);
-                existEvent.Image = eventModel.ImageFile.SaveImg(_env.WebRootPath, "assets/img/teacher");
+                Helpers.Helper.DeleteImg(_env.WebRootPath, "/assets/img/event", existEvent.Image);
+                existEvent.Image = eventModel.ImageFile.SaveImg(_env.WebRootPath, "assets/img/event");
             }
             if (eventModel.Name == null)
             {

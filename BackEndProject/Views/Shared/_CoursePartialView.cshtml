@@ -1,0 +1,47 @@
+﻿@model List<Course>
+<div style="display:flex!important" class="courses-area two pt-150 pb-150 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title">
+                    <img src="~/assets/img/icon/section1.png" alt="section-title">
+                    <h2>COURSES WE OFFER</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (Course course in Model)
+            {
+                <div style="cursor:pointer" class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-course">
+                        <div class="course-img">
+                            <a>
+                                <img src="~/assets/img/course/@course.Image" alt="course">
+                                <div class="course-hover">
+                                    <i class="fa fa-link"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="course-content">
+                            <h3><a href="course-details.html">@course.Category.Name.ToUpper()</a></h3>
+                            @if (course.Description == null)
+                            {
+                                <p>@course.Description</p>
+                            }
+                            else if (course.Description.Length > 120)
+                            {
+                                <p>@course.Description.Substring(0, 120) ...</p>
+                            }
+                            else
+                            {
+                                <p>@course.Description</p>
+                            }
+                            <a class="default-btn">read more</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
