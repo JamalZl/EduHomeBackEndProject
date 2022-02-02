@@ -9,5 +9,7 @@ namespace BackEndProject.ViewModels
     public class HomeVM
     {
         public Setting Setting { get; set; }
+        public List<NoticeBoard> NoticeBoards { get; set; }
+        public List<HeaderSlider> Sliders { get; set; }
     }
 }

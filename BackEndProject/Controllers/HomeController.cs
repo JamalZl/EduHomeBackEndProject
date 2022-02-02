@@ -1,4 +1,5 @@
 ﻿using BackEndProject.DAL;
+using BackEndProject.Models;
 using BackEndProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,7 +20,9 @@ namespace BackEndProject.Controllers
         {
             HomeVM homeVM = new HomeVM
             {
-                Setting = _context.Settings.FirstOrDefault()
+                Setting = _context.Settings.FirstOrDefault(),
+                NoticeBoards = _context.NoticeBoards.ToList(),
+                Sliders = _context.Sliders.ToList()
             };
             return View(homeVM);
         }

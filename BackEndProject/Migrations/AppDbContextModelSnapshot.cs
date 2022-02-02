@@ -189,6 +189,9 @@ namespace BackEndProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(500)")
                         .HasMaxLength(500);
@@ -482,27 +485,24 @@ namespace BackEndProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CompanyId1")
+                    b.Property<int>("CompanyId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(70)")
                         .HasMaxLength(70);
 
-                    b.Property<string>("PositionId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PositionId1")
+                    b.Property<int>("PositionId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CompanyId1");
+                    b.HasIndex("CompanyId");
 
-                    b.HasIndex("PositionId1");
+                    b.HasIndex("PositionId");
 
                     b.ToTable("Speakers");
                 });
@@ -719,11 +719,15 @@ namespace BackEndProject.Migrations
                 {
                     b.HasOne("BackEndProject.Models.Company", "Company")
                         .WithMany("Speakers")
-                        .HasForeignKey("CompanyId1");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("BackEndProject.Models.Position", "Position")
                         .WithMany("Speakers")
-                        .HasForeignKey("PositionId1");
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BackEndProject.Models.Teacher", b =>
@@ -774,7 +778,7 @@ namespace BackEndProject.Migrations
                         .IsRequired();
 
                     b.HasOne("BackEndProject.Models.Teacher", "Teacher")
-                        .WithMany("TeacherSkills")
+                        .WithMany()
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>EduHome</title>
-    <!-- plugins:css -->
     <link rel="stylesheet" href="~/admin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="~/admin/assets/vendors/base/vendor.bundle.base.css">
     @*@RenderSection("CSS", required: false)*@
@@ -188,73 +187,7 @@
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="mdi mdi-home menu-icon"></i>
-                            <span class="menu-title">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="slider" asp-action="index" class="nav-link">
-                            <i class="fas fa-sliders-h"></i>
-                            <span class="menu-title mx-4">Slider</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="setting" asp-action="index" class="nav-link">
-                            <i class="mdi mdi-settings"></i>
-                            <span class="menu-title mx-4">Setting</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="tag" asp-action="index" class="nav-link">
-                            <i class="mdi mdi-tag"></i>
-                            <span class="menu-title mx-4">Tag</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="category" asp-action="index" class="nav-link">
-                            <i class="mdi mdi-book-open-variant"></i>
-                            <span class="menu-title mx-4">Category</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="course" asp-action="index" class="nav-link">
-                            <i class="mdi mdi-home-modern"></i>
-                            <span class="menu-title mx-4">Course</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="hobby" asp-action="index" class="nav-link">
-                            <i class="mdi mdi-heart-box-outline"></i>
-                            <span class="menu-title mx-4">Hobby</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="skill" asp-action="index" class="nav-link">
-                            <i class="mdi mdi-white-balance-iridescent"></i>
-                            <span class="menu-title mx-4">Skill</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="faculty" asp-action="index" class="nav-link">
-                            <i class="mdi mdi-file-document-box"></i>
-                            <span class="menu-title mx-4">Faculty</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="position" asp-action="index" class="nav-link">
-                            <i class="mdi mdi-professional-hexagon"></i>
-                            <span class="menu-title mx-4">Position</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="teacher" asp-action="index" class="nav-link">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                            <span class="menu-title mx-4">Teacher</span>
-                        </a>
-                    </li>
+                <ul style="list-style:none!important" class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="pages/forms/basic_elements.html">
                             <i class="mdi mdi-view-headline menu-icon"></i>
@@ -282,16 +215,107 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                             <i class="mdi mdi-account menu-icon"></i>
-                            <span class="menu-title">User Pages</span>
+                            <span class="menu-title">Admin pages</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="auth">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html">
+                                        <i class="mdi mdi-home menu-icon"></i>
+                                        <span class="menu-title">Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="slider" asp-action="index" class="nav-link">
+                                        <i class="fas fa-sliders-h"></i>
+                                        <span class="menu-title mx-4">Slider</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="setting" asp-action="index" class="nav-link">
+                                        <i class="mdi mdi-settings"></i>
+                                        <span class="menu-title mx-4">Setting</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="tag" asp-action="index" class="nav-link">
+                                        <i class="mdi mdi-tag"></i>
+                                        <span class="menu-title mx-4">Tag</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="category" asp-action="index" class="nav-link">
+                                        <i class="mdi mdi-book-open-variant"></i>
+                                        <span class="menu-title mx-4">Category</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="course" asp-action="index" class="nav-link">
+                                        <i class="mdi mdi-home-modern"></i>
+                                        <span class="menu-title mx-4">Course</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="hobby" asp-action="index" class="nav-link">
+                                        <i class="mdi mdi-heart-box-outline"></i>
+                                        <span class="menu-title mx-4">Hobby</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="skill" asp-action="index" class="nav-link">
+                                        <i class="mdi mdi-white-balance-iridescent"></i>
+                                        <span class="menu-title mx-4">Skill</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="faculty" asp-action="index" class="nav-link">
+                                        <i class="mdi mdi-file-document-box"></i>
+                                        <span class="menu-title mx-4">Faculty</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="position" asp-action="index" class="nav-link">
+                                        <i class="mdi mdi-professional-hexagon"></i>
+                                        <span class="menu-title mx-4">Position</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="teacher" asp-action="index" class="nav-link">
+                                        <i class="fas fa-chalkboard-teacher"></i>
+                                        <span class="menu-title mx-4">Teacher</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="blog" asp-action="index" class="nav-link">
+                                        <i class="mdi mdi-blogger"></i>
+                                        <span class="menu-title mx-4">Blog</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="speaker" asp-action="index" class="nav-link">
+                                        <i class="fas fa-user-tie"></i>
+                                        <span class="menu-title mx-4">Speaker</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="event" asp-action="index" class="nav-link">
+                                        <i class="fas fa-calendar-day"></i>
+                                        <span class="menu-title mx-4">Event</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="company" asp-action="index" class="nav-link">
+                                        <i class="fas fa-building"></i>
+                                        <span class="menu-title mx-4">Company</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="noticeboard" asp-action="index" class="nav-link">
+                                        <i class="fas fa-chalkboard"></i>
+                                        <span class="menu-title mx-4">Notice Board</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>

@@ -75,7 +75,7 @@ namespace BackEndProject.Areas.Admin.Controllers
             if (existCategory == null) return NotFound();
             if (nameControl != null && nameControl.Id != id)
             {
-                ModelState.AddModelError("Name", "Tag is exist in database.Please enter different category name");
+                ModelState.AddModelError("Name", "Category is exist in database.Please enter different category name");
                 return View(existCategory);
             }
             existCategory.Name = category.Name;

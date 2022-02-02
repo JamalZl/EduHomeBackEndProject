@@ -68,7 +68,11 @@ namespace BackEndProject.Areas.Admin.Controllers
                     course.CourseTags.Add(courseTags);
                 }
             }
-            
+            if (course.Name==null)
+            {
+                ModelState.AddModelError("Name", "Please enter a name");
+                return View();
+            }
             if (course.ImageFormFile == null)
             {
                 ModelState.AddModelError("ImageFormFile", "Please enter an image");
@@ -124,6 +128,11 @@ namespace BackEndProject.Areas.Admin.Controllers
                 }
                 Helpers.Helper.DeleteImg(_env.WebRootPath, "/assets/img/course", existedCourse.Image);
                 existedCourse.Image = course.ImageFormFile.SaveImg(_env.WebRootPath, "assets/img/course");
+            }
+            if (course.Name == null)
+            {
+                ModelState.AddModelError("Name", "Please enter a name");
+                return View(existedCourse);
             }
             if (course.CategoryId==0)
             {

@@ -69,7 +69,7 @@
             <select asp-for="@Model.PositionId" class="form-select" asp-items="@(new SelectList(ViewBag.Positions,"Id","Name"))">
                 <option value="0">Select category</option>
             </select>
-            <span style="display:inline-block; margin-top:15px" class="mt-2 text text-danger" asp-validation-for="@Model.PhoneNumber"></span>
+            <span style="display:inline-block; margin-top:15px" class="mt-2 text text-danger" asp-validation-for="@Model.PositionId"></span>
         </div>
         <div class="mb-3 mt-3">
             <label asp-for="@Model.FacultyIds" class="form-label">Select Faculties</label>

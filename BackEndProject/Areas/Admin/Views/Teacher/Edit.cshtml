@@ -73,7 +73,7 @@
             <select asp-for="@Model.PositionId" class="form-select" asp-items="@(new SelectList(ViewBag.Positions,"Id","Name"))">
                 <option value="0">Select category</option>
             </select>
-            <span style="display:inline-block; margin-top:15px" class="mt-2 text text-danger" asp-validation-for="@Model.PhoneNumber"></span>
+            <span style="display:inline-block; margin-top:15px" class="mt-2 text text-danger" asp-validation-for="@Model.PositionId"></span>
         </div>
         <div class="mb-3 mt-3">
             <label asp-for="@Model.FacultyIds" class="form-label">Select Faculties</label>
@@ -120,8 +120,7 @@
 
 </div>
 
-@section Scripts{
+@*@section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-}
-s
+}*@
