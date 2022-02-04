@@ -24,9 +24,9 @@ namespace BackEndProject.Controllers
                 Setting = _context.Settings.FirstOrDefault(),
                 NoticeBoards = _context.NoticeBoards.ToList(),
                 Sliders = _context.Sliders.ToList(),
-                Courses = _context.Courses.Include(c => c.Category).ToList(),
-                Events = _context.Events.ToList(),
-                Blogs = _context.Blogs.ToList()
+                Courses = _context.Courses.Take(3).Include(c => c.Category).ToList(),
+                Events = _context.Events.Take(4).ToList(),
+                Blogs = _context.Blogs.Take(3).ToList()
             };
             return View(homeVM);
         }

@@ -8,12 +8,17 @@
     <form method="post" class="mt-3" enctype="multipart/form-data">
         <div class="mt-3">
             <h4>Current course image</h4>
-                <img style="width:220px;height:220px;object-fit:contain" src="~/assets/img/course/@Model.Image" alt="course image" /> 
+            <img style="width:220px;height:220px;object-fit:contain" src="~/assets/img/course/@Model.Image" alt="course image" />
         </div>
         <div class="mb-3">
             <label asp-for="@Model.ImageFormFile" class="form-label">Enter image</label>
             <input asp-for="@Model.ImageFormFile" accept="image/*" class="form-control">
             <span class="mt-4 text text-danger" asp-validation-for="@Model.ImageFormFile"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Name" class="form-label">Enter description</label>
+            <input asp-for="@Model.Name" class="form-control">
+            <span class="mt-4 text text-danger" asp-validation-for="@Model.Name"></span>
         </div>
         <div class="mb-3">
             <label asp-for="@Model.Description" class="form-label">Enter description</label>

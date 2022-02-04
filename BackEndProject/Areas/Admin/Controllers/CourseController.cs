@@ -43,7 +43,11 @@ namespace BackEndProject.Areas.Admin.Controllers
             ViewBag.Categories = _context.Categories.ToList();
             if (!ModelState.IsValid) return View();
             course.CourseTags = new List<CourseTags>();
-            //course.Category = new Category();
+            if (course.Name==null)
+            {
+                ModelState.AddModelError("Name", "Please insert a name");
+                return View();
+            }
             if (course.CategoryId == 0)
             {
                 ModelState.AddModelError("CategoryId", "Please select one category");
@@ -109,6 +113,11 @@ namespace BackEndProject.Areas.Admin.Controllers
 
             if (!ModelState.IsValid) return View(existedCourse);
             if (existedCourse == null) return NotFound();
+            if (course.Name == null)
+            {
+                ModelState.AddModelError("Name", "Please insert a name");
+                return View();
+            }
             if (course.ImageFormFile!=null)
             {
                 if (!course.ImageFormFile.IsImage())
@@ -159,6 +168,7 @@ namespace BackEndProject.Areas.Admin.Controllers
                 return View(existedCourse);
             }
             existedCourse.Description = course.Description;
+            existedCourse.Name = course.Name;
             existedCourse.About = course.About;
             existedCourse.Apply = course.Apply;
             existedCourse.Certification = course.Certification;

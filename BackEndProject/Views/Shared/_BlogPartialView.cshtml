@@ -1,37 +1,56 @@
 ﻿@model List<Blog>
-    <div class="blog-area pt-150 pb-150">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="section-title text-center">
-                        <img src="~/assets/img/icon/section.png" alt="section-title">
-                        <h2>LATEST FROM BLOG</h2>
+@{
+    var controller = ViewContext.RouteData.Values["controller"].ToString();
+}
+@if (controller == "Home")
+{
+    @foreach (Blog blog in Model)
+    {
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="single-blog">
+                <div class="blog-img">
+                    <a asp-controller="blog" asp-action="details" asp-route-id="@blog.Id"><img src="~/assets/img/blog/@blog.Image" alt="blog"></a>
+                    <div class="blog-hover">
+                        <a asp-controller="blog" asp-action="details" asp-route-id="@blog.Id"><i class="fa fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-top">
+                        <p>By Alex  /  @blog.Date.ToString("MMMM dd , yyyy")  /  <i class="fa fa-comments-o"></i> 4</p>
+                    </div>
+                    <div class="blog-bottom">
+                        <h2><a asp-controller="blog" asp-action="details" asp-route-id="@blog.Id">@blog.Title</a></h2>
+                        <a asp-controller="blog" asp-action="details" asp-route-id="@blog.Id">read more</a>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                @foreach (Blog blog in Model)
-                {
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="single-blog">
-                            <div class="blog-img">
-                                <a href="blog-details.html"><img src="~/assets/img/blog/@blog.Image" alt="blog"></a>
-                                <div class="blog-hover">
-                                    <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-top">
-                                    <p>By Alex  /  @blog.Date.ToString("MMMM dd yyyy")  /  <i class="fa fa-comments-o"></i> 4</p>
-                                </div>
-                                <div class="blog-bottom">
-                                    <h2><a href="blog-details.html">@blog.Title</a></h2>
-                                    <a href="blog-details.html">read more</a>
-                                </div>
-                            </div>
-                        </div>
+        </div>
+    }
+}
+else if (controller == "Blog")
+{
+    @foreach (Blog blog in Model)
+    {
+        <div style="margin-top:25px" class="col-md-6 col-sm-6 col-xs-12">
+            <div class="single-blog">
+                <div class="blog-img">
+                    <a asp-controller="blog" asp-action="details" asp-route-id="@blog.Id"><img src="~/assets/img/blog/@blog.Image" alt="blog"></a>
+                    <div class="blog-hover">
+                        <a asp-controller="blog" asp-action="details" asp-route-id="@blog.Id"><i class="fa fa-link"></i></a>
                     </div>
-                }
+                </div>
+                <div class="blog-content">
+                    <div class="blog-top">
+                        <p>By Alex  /  @blog.Date.ToString("MMMM dd , yyyy")  /  <i class="fa fa-comments-o"></i> 4</p>
+                    </div>
+                    <div class="blog-bottom">
+                        <h2><a asp-controller="blog" asp-action="details" asp-route-id="@blog.Id">@blog.Title</a></h2>
+                        <a asp-controller="blog" asp-action="details" asp-route-id="@blog.Id">read more</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    }
+}
+
+

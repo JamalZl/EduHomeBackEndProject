@@ -1,8 +1,10 @@
 using BackEndProject.DAL;
+using BackEndProject.Models;
 using BackEndProject.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +34,20 @@ namespace BackEndProject
             {
                 option.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
-        }
+            services.AddIdentity<AppUser, IdentityRole>(option =>
+            {
+                option.Password.RequireUppercase = false;
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequireLowercase = false;
+                option.Password.RequiredLength = 8;
+
+                option.Lockout.AllowedForNewUsers = true;
+                option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                option.Lockout.MaxFailedAccessAttempts = 5;
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
+
+            }
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -53,6 +68,7 @@ namespace BackEndProject
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

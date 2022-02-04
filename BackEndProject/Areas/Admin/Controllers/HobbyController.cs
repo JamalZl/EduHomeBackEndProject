@@ -22,9 +22,9 @@ namespace BackEndProject.Areas.Admin.Controllers
         }
         public IActionResult Index(int page = 1)
         {
-            ViewBag.TotalPage = Math.Ceiling((decimal)_context.Hobbies.Count() / 6);
+            ViewBag.TotalPage = Math.Ceiling((decimal)_context.Hobbies.Count() / 4);
             ViewBag.CurrentPage = page;
-            List<Hobby> hobbies = _context.Hobbies.Include(t => t.TeacherHobbies).ThenInclude(ct => ct.Teacher).Skip((page - 1) * 6).Take(6).ToList();
+            List<Hobby> hobbies = _context.Hobbies.Include(t => t.TeacherHobbies).ThenInclude(ct => ct.Teacher).Skip((page - 1) *4).Take(4).ToList();
             return View(hobbies);
         }
         public IActionResult Create()

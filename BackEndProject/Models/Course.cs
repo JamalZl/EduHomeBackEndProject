@@ -13,6 +13,8 @@ namespace BackEndProject.Models
         public int Id { get; set; }
         [StringLength(maximumLength: 500)]
         public string Description { get; set; }
+        [StringLength(maximumLength:100)]
+        public string Name { get; set; }
         public string Image { get; set; }
         [StringLength(maximumLength: 450)]
 

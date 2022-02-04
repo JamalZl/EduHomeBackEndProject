@@ -1,0 +1,21 @@
+﻿@model List<Teacher>
+@foreach (Teacher teacher in Model)
+{
+    <div style="cursor:pointer" class="col-md-3 col-sm-4 col-xs-12">
+        <div class="single-teacher">
+            <div class="single-teacher-img">
+                <a asp-controller="teacher" asp-action="details" asp-route-id="@teacher.Id" ><img src="~/assets/img/teacher/@teacher.Image" alt="teacher"></a>
+            </div>
+            <div class="single-teacher-content text-center">
+                <h2><a asp-controller="teacher" asp-action="details" asp-route-id="@teacher.Id">@teacher.Name @teacher.Surname</a></h2>
+                <h4>@teacher.Position.Name</h4>
+                <ul>
+                    <li><a href="@teacher.FacebookUrl"><i class="zmdi zmdi-facebook"></i></a></li>
+                    <li><a href="@teacher.PinterestUrl"><i class="zmdi zmdi-pinterest"></i></a></li>
+                    <li><a href="@teacher.VimeoUrl"><i class="zmdi zmdi-vimeo"></i></a></li>
+                    <li><a href="@teacher.TwitterUrl"><i class="zmdi zmdi-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
