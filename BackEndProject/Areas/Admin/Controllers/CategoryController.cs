@@ -14,7 +14,7 @@ namespace BackEndProject.Areas.Admin.Controllers
     public class CategoryController : Controller
     {
         private readonly AppDbContext _context;
-        private IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         public CategoryController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;

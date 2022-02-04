@@ -26,8 +26,15 @@ using BackEndProject.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\Areas\Admin\Views\_ViewImports.cshtml"
+using BackEndProject.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"09a760d7e2a2972bf8c5a0a3025eb11d1e7e1d26", @"/Areas/Admin/Views/Faculty/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"967492702cfe67c2e403da80d4ee0f2c31ebd18e", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"59bec06133a2a4d880301adb7e76dffc73b24c3f", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Faculty_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Faculty>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "faculty", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -72,7 +79,7 @@ using BackEndProject.Models;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<div class=\"container\">\r\n    <div class=\"mt-2 d-flex\" style=\"justify-content:flex-end\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09a760d7e2a2972bf8c5a0a3025eb11d1e7e1d266829", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09a760d7e2a2972bf8c5a0a3025eb11d1e7e1d267043", async() => {
                 WriteLiteral("\r\n            <i class=\"mdi mdi-upload btn-icon-prepend\"></i>\r\n            Create\r\n        ");
             }
             );
@@ -133,7 +140,7 @@ using BackEndProject.Models;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n                    </td>\r\n                    <td>\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09a760d7e2a2972bf8c5a0a3025eb11d1e7e1d269765", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09a760d7e2a2972bf8c5a0a3025eb11d1e7e1d269979", async() => {
                 WriteLiteral("\r\n                            <i style=\"color:darkorange;font-size:37px\" class=\"mdi mdi-tooltip-edit\"></i>\r\n                        ");
             }
             );
@@ -167,7 +174,7 @@ using BackEndProject.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09a760d7e2a2972bf8c5a0a3025eb11d1e7e1d2612447", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09a760d7e2a2972bf8c5a0a3025eb11d1e7e1d2612661", async() => {
                 WriteLiteral("\r\n                            <i style=\"color: red; font-size: 40px;\" class=\"mdi mdi-delete-forever \"></i>\r\n                        ");
             }
             );
@@ -221,7 +228,7 @@ WriteAttributeValue(" ", 1839, ViewBag.Currentpage == 1 ? "disabled" : "", 1840,
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09a760d7e2a2972bf8c5a0a3025eb11d1e7e1d2616233", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09a760d7e2a2972bf8c5a0a3025eb11d1e7e1d2616447", async() => {
                 WriteLiteral("Previous");
             }
             );
@@ -285,7 +292,7 @@ WriteAttributeValue(" ", 2246, ViewBag.CurrentPage == i ? "none" : "", 2247, 41,
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09a760d7e2a2972bf8c5a0a3025eb11d1e7e1d2620067", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09a760d7e2a2972bf8c5a0a3025eb11d1e7e1d2620281", async() => {
 #nullable restore
 #line 57 "C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\Areas\Admin\Views\Faculty\Index.cshtml"
                                                                                                                                                                                                                                          Write(i);
@@ -344,7 +351,7 @@ WriteAttributeValue(" ", 2445, ViewBag.CurrentPage == ViewBag.TotalPage ? "disab
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09a760d7e2a2972bf8c5a0a3025eb11d1e7e1d2623888", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09a760d7e2a2972bf8c5a0a3025eb11d1e7e1d2624102", async() => {
                 WriteLiteral("Next");
             }
             );

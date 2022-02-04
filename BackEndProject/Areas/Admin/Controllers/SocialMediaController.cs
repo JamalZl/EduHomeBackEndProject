@@ -12,7 +12,7 @@ namespace BackEndProject.Areas.Admin.Controllers
     public class SocialMediaController : Controller
     {
         private readonly AppDbContext _context;
-        private IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         public SocialMediaController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;

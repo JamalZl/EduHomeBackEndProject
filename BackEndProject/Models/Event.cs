@@ -24,6 +24,8 @@ namespace BackEndProject.Models
         public List<EventSpeaker> EventSpeakers { get; set; }
         [NotMapped]
         public List<int> SpeakerIds { get; set; }
+        public List<Comment> Comments { get; set; }
+
         [NotMapped]
         public IFormFile ImageFile { get; set; }
     }

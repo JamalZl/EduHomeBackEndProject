@@ -14,7 +14,7 @@ namespace BackEndProject.Areas.Admin.Controllers
     public class FacultyController : Controller
     {
         private readonly AppDbContext _context;
-        private IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         public FacultyController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;

@@ -14,7 +14,7 @@ namespace BackEndProject.Areas.Admin.Controllers
     public class SkillController : Controller
     {
         private readonly AppDbContext _context;
-        private IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         public SkillController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;

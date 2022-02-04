@@ -14,7 +14,7 @@ namespace BackEndProject.Areas.Admin.Controllers
     public class CompanyController : Controller
     {
         private readonly AppDbContext _context;
-        private IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         public CompanyController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;

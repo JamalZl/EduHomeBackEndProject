@@ -208,9 +208,13 @@ C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcorea
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Teacher\Details.cshtml.g.cs
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Event\Details.cshtml.g.cs
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Details.cshtml.g.cs
-C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\AccountController1\Register.cshtml.g.cs
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\Edit.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Account\Login.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Course\Comments.cshtml.g.cs

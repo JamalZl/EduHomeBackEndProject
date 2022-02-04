@@ -9,5 +9,6 @@ namespace BackEndProject.ViewModels
     public class CourseVM
     {
         public List<Course> Courses { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

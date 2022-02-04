@@ -16,7 +16,7 @@ namespace BackEndProject.Areas.Admin.Controllers
     {
 
         private readonly AppDbContext _context;
-        private IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         public SpeakerController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;

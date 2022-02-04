@@ -1,5 +1,7 @@
 ﻿using BackEndProject.DAL;
 using BackEndProject.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,9 +14,12 @@ namespace BackEndProject.Controllers
     public class BlogController : Controller
     {
         private readonly AppDbContext _context;
-        public BlogController(AppDbContext context)
+        private readonly UserManager<AppUser> _userManager;
+
+        public BlogController(AppDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
         public IActionResult Index(int page=1)
         {
@@ -25,9 +30,39 @@ namespace BackEndProject.Controllers
         }
         public IActionResult Details(int id)
         {
-            Blog blog = _context.Blogs.FirstOrDefault(b => b.Id == id);
+            Blog blog = _context.Blogs.Include(b=>b.Comments).ThenInclude(c=>c.AppUser).FirstOrDefault(b => b.Id == id);
+            List<Comment> comments = _context.Comments.Include(c => c.Blog).Include(c => c.AppUser).Where(c => c.BlogId == id).ToList();
             if (blog == null) return NotFound();
             return View(blog);
+        }
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddComment(Comment comment)
+        {
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (!ModelState.IsValid) return RedirectToAction("details", "blog", new { id = comment.BlogId });
+            if (!_context.Blogs.Any(c => c.Id == comment.BlogId)) return NotFound();
+            Comment cmmt = new Comment
+            {
+                Text = comment.Text,
+                BlogId = comment.BlogId,
+                CreatedTime = DateTime.Now,
+                AppUserId = user.Id,
+            };
+            _context.Comments.Add(cmmt);
+            _context.SaveChanges();
+            return RedirectToAction("details", "blog", new { id = comment.BlogId });
+        }
+        public async Task<IActionResult> DeleteComment(int id)
+        {
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (!ModelState.IsValid) return RedirectToAction("Index", "blog");
+            if (!_context.Comments.Any(c => c.Id == id && c.AppUserId == user.Id)) return NotFound();
+            Comment comment = _context.Comments.FirstOrDefault(c => c.Id == id && c.AppUserId == user.Id);
+            _context.Comments.Remove(comment);
+            _context.SaveChanges();
+            return RedirectToAction("Details", "blog", new { id = comment.BlogId });
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BackEndProject.DAL;
 using BackEndProject.Extensions;
 using BackEndProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,10 +12,12 @@ using System.Threading.Tasks;
 namespace BackEndProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    //[Authorize(Roles = "SuperAdmin,Admin")]
+
     public class BlogController : Controller
     {
         private readonly AppDbContext _context;
-        private IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         public BlogController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;

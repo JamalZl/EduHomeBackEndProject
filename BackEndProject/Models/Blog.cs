@@ -18,6 +18,8 @@ namespace BackEndProject.Models
         [StringLength(maximumLength:200)]
         public string Image { get; set; }
         public DateTime Date { get; set; }
+        public List<Comment> Comments { get; set; }
+
         [NotMapped]
         public IFormFile ImageFile { get; set; }
 

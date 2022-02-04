@@ -31,6 +31,7 @@ namespace BackEndProject.Models
         [NotMapped]
         public List<int> TagIds { get; set; }
         public List<CourseTags> CourseTags { get; set; }
+        public List<Comment> Comments { get; set; }
         [NotMapped]
         public IFormFile ImageFormFile { get; set; }
 

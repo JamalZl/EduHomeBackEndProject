@@ -14,7 +14,7 @@ namespace BackEndProject.Areas.Admin.Controllers
     public class SliderController : Controller
     {
         private readonly AppDbContext _context;
-        private IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         public SliderController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
