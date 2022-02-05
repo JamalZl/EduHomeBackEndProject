@@ -42,7 +42,7 @@ namespace BackEndProject.Controllers
             {
                 CourseVM courseV = new CourseVM
                 {
-                    Courses = _context.Courses.Include(c=>c.Category).Where(f => f.Name.Contains(keyword)||f.Category.Name.Contains(keyword)).ToList()
+                    Courses = _context.Courses.Include(c=>c.Category).Where(f => f.Name.ToLower().Trim().Contains(keyword.ToLower().Trim())||f.Category.Name.ToLower().Trim().Contains(keyword.ToLower().Trim())).ToList()
                 };
                 if (!courseV.Courses.Any(f => f.Name.Contains(keyword) || f.Category.Name.Contains(keyword)))
                 {
@@ -57,6 +57,12 @@ namespace BackEndProject.Controllers
                     Courses = _context.Courses.Include(c => c.Category).Include(c => c.CourseTags).ThenInclude(ct => ct.Tag).Skip((page - 1) * 3).Take(3).ToList()
                 };
             return View(courseVM);
+        }
+
+        public IActionResult Search(string search)
+        {
+            List<Course> course = _context.Courses.Where(f => f.Name.ToLower().Trim().Contains(search.ToLower().Trim())  || f.Category.Name.ToLower().Trim().Contains(search.ToLower().Trim())).ToList();
+            return PartialView("_CoursePartialView", course);
         }
         public IActionResult Details(int id)
         {

@@ -4,6 +4,24 @@
     var controller = ViewContext.RouteData.Values["controller"].ToString();
 
 }
+@if (TempData["Forgot"] != null)
+{
+    <input type="hidden" id="forgotJS" />
+}
+@if (TempData["Reset"] != null)
+{
+    <input type="hidden" id="resetJS" />
+
+}
+@if (TempData["Verify"] != null)
+{
+<input type="hidden" id="verifyJS" />}
+
+
+@if (TempData["Verified"] != null)
+{
+<input type="hidden" id="verifiedJS" />}
+
 
 <section id="slider-container" class="slider-area two">
     <div class="slider-owl owl-theme owl-carousel">
@@ -191,3 +209,91 @@
     </div>
 </div>
 <!-- Subscribe End -->
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            if ($("#forgotJS").length) {
+                Command: toastr["success"]("Link has been sent to your email")
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "7000",
+                    "extendedTimeOut": "2000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            }
+            if ($("#resetJS").length) {
+                Command: toastr["success"]("Your password has been changed")
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "7000",
+                    "extendedTimeOut": "2000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            }
+            if ($("#verifyJS").length) {
+                Command: toastr["success"]("Please verify your email")
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "7000",
+                    "extendedTimeOut": "2000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            }
+            if ($("#verifiedJS").length) {
+                Command: toastr["success"]("Your email has been verified")
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "7000",
+                    "extendedTimeOut": "2000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            }
+        }
+    </script>
+}

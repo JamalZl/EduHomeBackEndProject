@@ -69,9 +69,9 @@ namespace BackEndProject.Areas.Admin.Controllers
         //{
         //    AppUser user = new AppUser
         //    {
-        //        UserName = "JamalZl",
+        //        UserName = "Camal123",
         //        Email = "jamalaz@code.edu.az",
-        //        Name = "Jamal",
+        //        Name = "Camal",
         //        Surname = "Zeynalli",
         //        Country = "Azerbaijan"
         //    };

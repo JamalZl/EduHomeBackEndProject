@@ -13,5 +13,6 @@ namespace BackEndProject.Models
         public string Surname { get; set; }
         public string Country { get; set; }
         public bool IsAdmin { get; set; }
+        public List<ContactMessage> ContactMessages { get; set; }
     }
 }

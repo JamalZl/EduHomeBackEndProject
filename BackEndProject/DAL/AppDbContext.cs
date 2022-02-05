@@ -38,5 +38,6 @@ namespace BackEndProject.DAL
         public DbSet<Speaker> Speakers { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<ContactMessage> ContactMessages { get; set; }
     }
 }

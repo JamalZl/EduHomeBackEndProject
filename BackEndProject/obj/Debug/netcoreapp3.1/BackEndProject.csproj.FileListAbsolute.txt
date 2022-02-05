@@ -221,3 +221,5 @@ C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcorea
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Blog\Comments.cshtml.g.cs
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Event\Comments.cshtml.g.cs
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\Search.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs

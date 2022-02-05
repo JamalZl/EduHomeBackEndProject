@@ -29,8 +29,8 @@
                     <h3>search courses</h3>
                 </div>
                 <div class="course-form">
-                    <form asp-controller="course" asp-action="index" method="get">
-                        <input type="search" placeholder="Search..." name="keyword" />
+                    <form asp-action="index" asp-controller="course" method="get">
+                        <input type="search" placeholder="Search..." name="keyword"  id="Course-Search" />
                         <button type="submit">search</button>
                     </form>
 
@@ -42,8 +42,10 @@
 
             }
         </div>
-        <div class="row">
+        <div class="row" id="Old-Courses">
             @await Html.PartialAsync("_CoursePartialView", Model.Courses)
+        </div>
+        <div class="row" id="New-Courses">
         </div>
     </div>
     @if (Model.Courses.Count != 0)
@@ -111,23 +113,33 @@
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    @*<script>
-            $('#myPager').on('click', 'a', function () {
-                $.ajax({
-                    url: this.href,
-                    type: 'GET',
-                    cache: false,
-                    success: function (result) {
-                        alert(result);
-                        // $('#some_grid_container').html(result);
-                    },
-                    error: function (xhr, textStatus, errorThrown) {
-                        // document.write("FAIL: " + xhr.responseText + "-" + textStatus.responseText + "-" + errorThrown.responseText);
-                        alert("FAIL: " + xhr.responseText + "-" + textStatus.responseText + "-" + errorThrown.responseText);
-                    }
-                });
-                return false;
-            });
-        </script>*@
+        <script>
+            $(document).on('keyup', `#Course-Search`, function () {
+
+                $("#New-Courses").empty()
+                if ($(this).val().length > 0) {
+                    $.ajax({
+                        url: `/Course/Search`,
+                        data: {
+                            "search": $(this).val(),
+                        },
+                        type: "Get",
+                        success: function (res) {
+
+                            $("#Old-Courses").css("display", "none")
+
+                            $("#New-Courses").append(res)
+
+                        }
+                    })
+                }
+                else {
+                    $("#Old-Courses").css("display", "block")
+
+                }
+
+            })
+        </script>
+    }
 }
 <!-- Subscribe End -->
