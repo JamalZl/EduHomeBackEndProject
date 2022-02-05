@@ -29,40 +29,52 @@
                     <h3>search courses</h3>
                 </div>
                 <div class="course-form">
-                    <form id="search" action="#">
-                        <input type="search" placeholder="Search..." name="search" />
+                    <form asp-controller="course" asp-action="index" method="get">
+                        <input type="search" placeholder="Search..." name="keyword" />
                         <button type="submit">search</button>
                     </form>
+
                 </div>
             </div>
+            @if (Model.Courses.Count == 0)
+            {
+                <div style="color:red;font-size:50px">No result</div>
+
+            }
         </div>
         <div class="row">
             @await Html.PartialAsync("_CoursePartialView", Model.Courses)
         </div>
     </div>
-    <div id="myPager" class="container paggg">
-        <div class="row justify-content-center mt-4">
-            <nav aria-label="...">
-                <ul class="pagination" style="justify-content:center">
+    @if (Model.Courses.Count != 0)
+    {
+        <div id="myPager" class="container">
+            <div class="row justify-content-center mt-4">
+                <nav aria-label="...">
+                    <ul class="pagination" style="justify-content:center">
 
-                    <li class="page-item @(ViewBag.Currentpage == 1 ? "disabled" : "")">
-                        <a class="page-link" asp-controller="course" asp-action="index" asp-route-page="@(ViewBag.CurrentPage-1)">Previous</a>
-                    </li>
+                        <li class="page-item @(ViewBag.Currentpage == 1 ? "disabled" : "")">
+                            <a class="page-link" asp-controller="course" asp-action="index" asp-route-page="@(ViewBag.CurrentPage-1)">Previous</a>
+                        </li>
 
-                    @for (int i = 1; i <= ViewBag.TotalPage; i++)
-                    {
-                        <li class="page-item  @(ViewBag.CurrentPage == i ? "active" : "")" style="pointer-events: @(ViewBag.CurrentPage == i ? "none" : "")"><a class="page-link" asp-controller="course" asp-action="index" asp-route-page="@i">@i</a></li>
-                    }
+                        @for (int i = 1; i <= ViewBag.TotalPage; i++)
+                        {
+                            <li class="page-item  @(ViewBag.CurrentPage == i ? "active" : "")" style="pointer-events: @(ViewBag.CurrentPage == i ? "none" : "")"><a class="page-link" asp-controller="course" asp-action="index" asp-route-page="@i">@i</a></li>
+                        }
 
-                    <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPage ? "disabled" : "")">
-                        <a class="page-link txt" asp-controller="course" asp-action="index" asp-route-page="@(ViewBag.CurrentPage +1)">Next</a>
-                    </li>
-                </ul>
-            </nav>
+                        <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPage ? "disabled" : "")">
+                            <a class="page-link txt" asp-controller="course" asp-action="index" asp-route-page="@(ViewBag.CurrentPage +1)">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
 
-    </div>
-
+    }
+    else
+    {
+        <span></span>
+    }
 </div>
 <!-- Course End -->
 <!-- Subscribe Start -->
@@ -100,22 +112,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @*<script>
-        $('#myPager').on('click', 'a', function () {
-            $.ajax({
-                url: this.href,
-                type: 'GET',
-                cache: false,
-                success: function (result) {
-                    alert(result);
-                    // $('#some_grid_container').html(result);
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    // document.write("FAIL: " + xhr.responseText + "-" + textStatus.responseText + "-" + errorThrown.responseText);
-                    alert("FAIL: " + xhr.responseText + "-" + textStatus.responseText + "-" + errorThrown.responseText);
-                }
+            $('#myPager').on('click', 'a', function () {
+                $.ajax({
+                    url: this.href,
+                    type: 'GET',
+                    cache: false,
+                    success: function (result) {
+                        alert(result);
+                        // $('#some_grid_container').html(result);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        // document.write("FAIL: " + xhr.responseText + "-" + textStatus.responseText + "-" + errorThrown.responseText);
+                        alert("FAIL: " + xhr.responseText + "-" + textStatus.responseText + "-" + errorThrown.responseText);
+                    }
+                });
+                return false;
             });
-            return false;
-        });
-    </script>*@
+        </script>*@
 }
 <!-- Subscribe End -->

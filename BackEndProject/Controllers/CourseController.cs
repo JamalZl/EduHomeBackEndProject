@@ -32,6 +32,32 @@ namespace BackEndProject.Controllers
             };
             return View(courseVM);
         }
+
+        [HttpGet]
+        public IActionResult Index(string keyword,int page=1)
+        {
+            
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                CourseVM courseV = new CourseVM
+                {
+                    Courses = _context.Courses.Include(c=>c.Category).Where(f => f.Name.Contains(keyword)||f.Category.Name.Contains(keyword)).ToList()
+                };
+                if (!courseV.Courses.Any(f => f.Name.Contains(keyword) || f.Category.Name.Contains(keyword)))
+                {
+                    ModelState.AddModelError("", "No result");
+                }
+                return View(courseV);
+            }
+                ViewBag.TotalPage = Math.Ceiling((decimal)_context.Courses.Count() / 3);
+                ViewBag.CurrentPage = page;
+                CourseVM courseVM = new CourseVM
+                {
+                    Courses = _context.Courses.Include(c => c.Category).Include(c => c.CourseTags).ThenInclude(ct => ct.Tag).Skip((page - 1) * 3).Take(3).ToList()
+                };
+            return View(courseVM);
+        }
         public IActionResult Details(int id)
         {
             ViewBag.Categories = _context.Categories.Include(c => c.Courses).ToList();
@@ -59,16 +85,6 @@ namespace BackEndProject.Controllers
                 CreatedTime = DateTime.Now,
                 AppUserId = user.Id,
             };
-            //if (cmmt.Text.Length > 500)
-            //{
-            //    ModelState.AddModelError("Text", "You can not enter more than 500 characters");
-            //    return View();
-            //}
-            //else if (cmmt.Text == null)
-            //{
-            //    ModelState.AddModelError("Text", "You can not send empty comment");
-            //    return View();
-            //}
             _context.Comments.Add(cmmt);
             _context.SaveChanges();
             return RedirectToAction("details", "course", new { id = comment.CourseId });
@@ -83,5 +99,6 @@ namespace BackEndProject.Controllers
             _context.SaveChanges();
             return RedirectToAction("Details", "Course", new { id = comment.CourseId });
         }
+     
     }
 }

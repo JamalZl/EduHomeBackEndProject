@@ -175,9 +175,13 @@ namespace BackEndProject.Controllers
             return RedirectToAction("index", "home");
 
         }
-        public IActionResult Show()
+        //public IActionResult Show()
+        //{
+        //    return Content(User.Identity.IsAuthenticated.ToString());
+        //}
+        public IActionResult ForgotPassword()
         {
-            return Content(User.Identity.IsAuthenticated.ToString());
+            return View();
         }
     }
 }

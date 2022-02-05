@@ -25,7 +25,25 @@ namespace BackEndProject.Controllers
         {
             ViewBag.TotalPage = Math.Ceiling((decimal)_context.Blogs.Count() / 3);
             ViewBag.CurrentPage = page;
-            List<Blog> modelBlog = _context.Blogs.Skip((page-1)*3).Take(3).ToList();
+            List<Blog> modelBlog = _context.Blogs.Include(b=>b.Comments).Skip((page-1)*3).Take(3).ToList();
+            return View(modelBlog);
+        }
+        [HttpGet]
+        public IActionResult Index(string keyword,int page=1)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                List<Blog> blogs = _context.Blogs.Include(b => b.Comments).Where(f => f.Title.Contains(keyword)).ToList();
+                if (!blogs.Any(f => f.Title.Contains(keyword)))
+                {
+                    ModelState.AddModelError("", "No result");
+                    return View(blogs);
+                }
+                return View(blogs);
+            }
+            ViewBag.TotalPage = Math.Ceiling((decimal)_context.Blogs.Count() / 3);
+            ViewBag.CurrentPage = page;
+            List<Blog> modelBlog = _context.Blogs.Include(b=>b.Comments).Skip((page - 1) * 3).Take(3).ToList();
             return View(modelBlog);
         }
         public IActionResult Details(int id)

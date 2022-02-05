@@ -33,6 +33,9 @@
                 <th>
                     Edit/Delete
                 </th>
+                <th>
+                    Comments
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -63,6 +66,11 @@
                     </a>
                     <a style="text-decoration:none;" class="delete-item" asp-controller="event" asp-action="delete" asp-route-id="@item.Id">
                         <i style="color: red; font-size: 40px;" class="mdi mdi-delete-forever "></i>
+                    </a>
+                </td>
+                <td>
+                    <a asp-controller="event" class="comments" asp-action="comments" asp-route-EventId="@item.Id">
+                        <i style="font-size:30px;color:darkslateblue" class="far fa-comments"></i>
                     </a>
                 </td>
             </tr>

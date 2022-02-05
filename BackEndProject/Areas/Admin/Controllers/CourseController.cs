@@ -193,20 +193,20 @@ namespace BackEndProject.Areas.Admin.Controllers
             _context.SaveChanges();
             return Json(new { status = 200 });
         }
-        //public IActionResult Comments(int CourseId)
-        //{
-        //    if (!_context.Comments.Any(c => c.CourseId == CourseId)) return RedirectToAction("index", "course");
-        //    List<Comment> comments = _context.Comments.Include(c => c.AppUser).Where(c=>c.CourseId==CourseId).ToList();
-        //    return View(comments);
-        //}
-        //public IActionResult CStatusChange(int id)
-        //{
-        //    if (!_context.Comments.Any(c => c.Id == id)) return RedirectToAction("Index", "Course");
-        //    Comment comment = _context.Comments.SingleOrDefault(c => c.Id == id);
-        //    comment.IsAccess = comment.IsAccess ? false : true;
-        //    _context.SaveChanges();
-        //    return RedirectToAction("Comments", "Course", new { CourseId = comment.CourseId });
+        public IActionResult Comments(int CourseId)
+        {
+            if (!_context.Comments.Any(c => c.CourseId == CourseId)) return RedirectToAction("index", "course");
+            List<Comment> comments = _context.Comments.Include(c => c.AppUser).Where(c => c.CourseId == CourseId).ToList();
+            return View(comments);
+        }
+        public IActionResult CStatusChange(int id)
+        {
+            if (!_context.Comments.Any(c => c.Id == id)) return RedirectToAction("Index", "Course");
+            Comment comment = _context.Comments.SingleOrDefault(c => c.Id == id);
+            comment.IsAccess = comment.IsAccess ? false : true;
+            _context.SaveChanges();
+            return RedirectToAction("Comments", "Course", new { CourseId = comment.CourseId });
 
-        //}
+        }
     }
 }

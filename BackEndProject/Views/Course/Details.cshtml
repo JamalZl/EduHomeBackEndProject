@@ -66,17 +66,27 @@
                     <div class="reply-area">
                         <h3>LEAVE A REPLY</h3>
                         <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut<br> the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
-                        <form asp-action="AddComment" method="post">
-                            <label for="Text"><span>Your review *</span></label><br>
-                            <input name="Text">
-                            <input type="hidden" name="CourseId" value="@Model.Id" />
-                            <button class="btn btn-inverse-primary" type="submit"><span>SUBMIT</span></button>
-                        </form>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <form asp-action="AddComment" method="post">
+                                <label for="Text"><span>Your review *</span></label><br>
+                                <input name="Text">
+                                <input type="hidden" name="CourseId" value="@Model.Id" />
+                                <button class="btn btn-inverse-primary" type="submit"><span>SUBMIT</span></button>
+                            </form>
+                        }
+                        else
+                        {
+                            <span style="font-size:30px;color:darkslategrey">
+                                Comments
+                            </span>
+                        }
                     </div>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        @foreach (var comment in Model.Comments.OrderBy(c => c.CreatedTime))
+                        @foreach (var comment in Model.Comments.Where(f => f.IsAccess == true).OrderByDescending(c => c.CreatedTime))
                         {
+
                             @if (comment.AppUser.UserName == User.Identity.Name)
                             {
                                 <div style="margin-top:20px;padding:7px;" class="review">
@@ -98,7 +108,7 @@
                             {
                                 <div style="margin-top:20px;padding:7px;" class="review">
                                     <div class="info">
-                                        <span>@comment.AppUser.UserName</span> <span> @comment.CreatedTime.ToString("dd MMMM yyyy HH:mm")</span>
+                                        <span style="margin-right:19px;">@comment.AppUser.UserName</span> <span> @comment.CreatedTime.ToString("dd MMMM yyyy HH:mm")</span>
                                         <p style="margin-top:12px; max-width:650px;overflow-wrap:break-word">
                                             @comment.Text
                                         </p>
@@ -107,10 +117,22 @@
                             }
                         }
                     }
-                    else
+                    @if (!User.Identity.IsAuthenticated)
                     {
+                        @foreach (var comment1 in Model.Comments.Where(f => f.IsAccess == true).OrderByDescending(c => c.CreatedTime))
+                        {
+
+                            <div style="margin-top:20px;padding:7px;" class="review">
+                                <div class="info">
+                                    <span>@comment1.AppUser.UserName</span> <span> @comment1.CreatedTime.ToString("dd MMMM yyyy HH:mm")</span>
+                                    <p style="margin-top:12px; max-width:650px;overflow-wrap:break-word">
+                                        @comment1.Text
+                                    </p>
+                                </div>
+                            </div>
+                        }
                         <span style="display:inline-block;margin-top:20px;">
-                            For adding comment you have to Login.If you dont have an account click <a style="color:red" asp-controller="account" asp-action="register">here</a>
+                            For adding comment you have to <a style="color:red" asp-controller="account" asp-action="login">Login</a>.If you dont have an account click <a style="color:red" asp-controller="account" asp-action="register">here</a>
                         </span>
                     }
                 </div>

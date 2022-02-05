@@ -28,6 +28,9 @@
                 <th>
                     Edit/Delete
                 </th>
+                <th>
+                    Comments
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -65,6 +68,11 @@
                     </a>
                     <a style="text-decoration:none;" class="delete-item" asp-controller="course" asp-action="delete" asp-route-id="@course.Id">
                         <i style="color: red; font-size: 40px;" class="mdi mdi-delete-forever "></i>
+                    </a>
+                </td>
+                <td >
+                    <a asp-controller="course" class="comments" asp-action="comments" asp-route-CourseId="@course.Id">
+                        <i style="font-size:30px;color:darkslateblue" class="far fa-comments"></i>
                     </a>
                 </td>
             </tr>
@@ -125,6 +133,10 @@
                 }
             })
         })
+
+
+
+       
     </script>
 }
 

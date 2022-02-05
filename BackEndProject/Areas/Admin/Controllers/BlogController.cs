@@ -4,6 +4,7 @@ using BackEndProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -116,6 +117,21 @@ namespace BackEndProject.Areas.Admin.Controllers
             _context.Blogs.Remove(blog);
             _context.SaveChanges();
             return Json(new { status = 200 });
+        }
+        public IActionResult Comments(int BlogId)
+        {
+            if (!_context.Comments.Any(c => c.BlogId == BlogId)) return RedirectToAction("index", "blog");
+            List<Comment> comments = _context.Comments.Include(c => c.AppUser).Where(c => c.BlogId == BlogId).ToList();
+            return View(comments);
+        }
+        public IActionResult CStatusChange(int id)
+        {
+            if (!_context.Comments.Any(c => c.Id == id)) return RedirectToAction("Index", "blog");
+            Comment comment = _context.Comments.SingleOrDefault(c => c.Id == id);
+            comment.IsAccess = comment.IsAccess ? false : true;
+            _context.SaveChanges();
+            return RedirectToAction("comments", "blog", new { BlogId = comment.BlogId });
+
         }
     }
 }

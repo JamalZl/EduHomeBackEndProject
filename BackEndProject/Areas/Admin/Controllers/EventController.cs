@@ -186,5 +186,20 @@ namespace BackEndProject.Areas.Admin.Controllers
             _context.SaveChanges();
             return Json(new { status = 200 });
         }
+        public IActionResult Comments(int EventId)
+        {
+            if (!_context.Comments.Any(c => c.EventId == EventId)) return RedirectToAction("index", "event");
+            List<Comment> comments = _context.Comments.Include(c => c.AppUser).Where(c => c.EventId == EventId).ToList();
+            return View(comments);
+        }
+        public IActionResult CStatusChange(int id)
+        {
+            if (!_context.Comments.Any(c => c.Id == id)) return RedirectToAction("Index", "event");
+            Comment comment = _context.Comments.SingleOrDefault(c => c.Id == id);
+            comment.IsAccess = comment.IsAccess ? false : true;
+            _context.SaveChanges();
+            return RedirectToAction("Comments", "event", new { EventId = comment.EventId });
+
+        }
     }
 }

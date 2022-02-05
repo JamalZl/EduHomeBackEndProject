@@ -30,6 +30,9 @@
                 <th>
                     Edit/Delete
                 </th>
+                <th>
+                    Comments
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -72,6 +75,11 @@
                             <i style="color: red; font-size: 40px;" class="mdi mdi-delete-forever "></i>
                         </a>
                     </td>
+                    <td>
+                        <a asp-controller="blog" class="comments" asp-action="comments" asp-route-BlogId="@blog.Id">
+                            <i style="font-size:30px;color:darkslateblue" class="far fa-comments"></i>
+                        </a>
+                    </td>
                 </tr>
             }
         </tbody>
@@ -102,34 +110,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        //$(".delete-item").click(function (e) {
-        //    e.preventDefault()
-        //    Swal.fire({
-        //        title: 'Are you sure?',
-        //        text: "You won't be able to revert this!",
-        //        icon: 'warning',
-        //        showCancelButton: true,
-        //        confirmButtonColor: '#3085d6',
-        //        cancelButtonColor: '#d33',
-        //        confirmButtonText: 'Yes, delete it!'
-        //    }).then((result) => {
-        //        if (result.isConfirmed) {
-        //            var link = $(this).attr("href");
-        //            fetch(link).then(response => response.json()).then(data => {
-        //                if (data.status == 200) {
-        //                    location.reload(true)
-        //                } else {
-        //                    Swal.fire(
-        //                        'Not found!',
-        //                        'Your file can not be deleted.',
-        //                        'Failed'
-        //                    )
-        //                }
-        //            }
-        //            );
-        //        }
-        //    })
-        //})
+            $(".delete-item").click(function (e) {
+                e.preventDefault()
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var link = $(this).attr("href");
+                        fetch(link).then(response => response.json()).then(data => {
+                            if (data.status == 200) {
+                                location.reload(true)
+                            } else {
+                                Swal.fire(
+                                    'Not found!',
+                                    'Your file can not be deleted.',
+                                    'Failed'
+                                )
+                            }
+                        }
+                        );
+                    }
+                })
+            })
     </script>
 }
 

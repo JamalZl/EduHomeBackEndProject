@@ -28,10 +28,30 @@ namespace BackEndProject.Controllers
             List<Event> eventModel = _context.Events.Include(e => e.EventSpeakers).ThenInclude(ev => ev.Speaker).ThenInclude(s => s.Company).Include(e => e.EventSpeakers).ThenInclude(es => es.Speaker).ThenInclude(e => e.Position).Skip((page-1)*4).Take(4).ToList();
             return View(eventModel);
         }
+        [HttpGet]
+        public IActionResult Index(string keyword,int page=1)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                
+                List<Event> events = _context.Events.Include(e=>e.EventSpeakers).ThenInclude(es=>es.Speaker).Where(f => f.Name.Contains(keyword)|| f.EventSpeakers.FirstOrDefault().Speaker.Name.Contains(keyword)).ToList();
+                if (!events.Any(f => f.Name.Contains(keyword)))
+                {
+                    ModelState.AddModelError("", "No result");
+                    return View(events);
+                }
+                return View(events);
+            }
+            ViewBag.TotalPage = Math.Ceiling((decimal)_context.Events.Count() / 4);
+            ViewBag.CurrentPage = page;
+            List<Event> eventModel = _context.Events.Include(e => e.EventSpeakers).ThenInclude(ev => ev.Speaker).ThenInclude(s => s.Company).Include(e => e.EventSpeakers).ThenInclude(es => es.Speaker).ThenInclude(e => e.Position).Skip((page - 1) * 4).Take(4).ToList();
+            return View(eventModel);
+
+        }
         public IActionResult Details(int id)
         {
             ViewBag.EventSpeakers = _context.EventSpeakers.Include(es => es.Speaker).ThenInclude(s=>s.Position).Include(es=>es.Speaker).ThenInclude(s=>s.Company).Include(es => es.Event).Where(es => es.EventId == id).ToList();
-            Event eventt = _context.Events.Include(e => e.EventSpeakers).ThenInclude(ev => ev.Speaker).ThenInclude(s => s.Company).Include(e => e.EventSpeakers).ThenInclude(es => es.Speaker).ThenInclude(e => e.Position).FirstOrDefault(t=>t.Id==id);
+            Event eventt = _context.Events.Include(e=>e.Comments).ThenInclude(c=>c.AppUser).Include(e => e.EventSpeakers).ThenInclude(ev => ev.Speaker).ThenInclude(s => s.Company).Include(e => e.EventSpeakers).ThenInclude(es => es.Speaker).ThenInclude(e => e.Position).FirstOrDefault(t=>t.Id==id);
             if (eventt==null )
             {
                 return NotFound();
@@ -55,7 +75,7 @@ namespace BackEndProject.Controllers
             };
             _context.Comments.Add(cmmt);
             _context.SaveChanges();
-            return RedirectToAction("details", "course", new { id = comment.EventId });
+            return RedirectToAction("details", "event", new { id = comment.EventId });
         }
         public async Task<IActionResult> DeleteComment(int id)
         {

@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="~/assets/css/style.css">
     <link rel="stylesheet" href="~/assets/css/responsive.css">
     <script src="~/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    
 </head>
 <body>
     <!--[if lt IE 8]>
@@ -43,7 +44,7 @@
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="header-top-right text-right">
-                            @if (!User.Identity.IsAuthenticated)
+                            @if (!(User.Identity.IsAuthenticated && User.IsInRole("Member")))
                             {
                                 <ul>
                                     <li><a asp-controller="account" asp-action="register">Register</a></li>
@@ -67,7 +68,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="logo">
-                            <a href="index.html"><img src="~/assets/img/logo/@layoutService.GetSettingsData().SiteLogo" alt="eduhome" /></a>
+                            <a asp-controller="home" asp-action="index"><img src="~/assets/img/logo/@layoutService.GetSettingsData().SiteLogo" alt="eduhome" /></a>
                         </div>
                     </div>
                     <div class="col-md-9 col-sm-9 col-xs-6">
@@ -105,8 +106,8 @@
                                 </ul>
                                 <div class="search">
                                     <div class="search-form">
-                                        <form id="search-form" action="#">
-                                            <input type="search" placeholder="Search here..." name="search" />
+                                        <form method="get" asp-controller="home" asp-action="search" id="search-form">
+                                            <input type="search" placeholder="Search here..." name="keyword" />
                                             <button type="submit">
                                                 <span><i class="fa fa-search"></i></span>
                                             </button>
