@@ -1,5 +1,6 @@
 ﻿using BackEndProject.DAL;
 using BackEndProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,23 +23,20 @@ namespace BackEndProject.Controllers
         {
             return View();
         }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Message(ContactMessage messag)
-        //{
-        //    AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-        //    //if (!ModelState.IsValid) return RedirectToAction("index", "contact");
-        //    //if (!_context.Any(c => c.Id == messag.AppUserId)) return NotFound();
-        //    ContactMessage cmessage = new ContactMessage
-        //    {
-        //        Message = messag.Message,
-        //        AppUser = messag.AppUser,
-        //        CreatedTime = DateTime.Now,
-        //        AppUserId = user.Id,
-        //    };
-        //    _context.ContactMessages.Add(cmessage);
-        //    _context.SaveChanges();
-        //    return RedirectToAction("index", "contact");
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Message(ContactMessage mssg)
+        {
+            if (!ModelState.IsValid) return View();
+            ContactMessage cm = new ContactMessage
+            {
+                Message = mssg.Message,
+                Email = mssg.Email,
+                SendDate = DateTime.Now
+            };
+            _context.ContactMessages.Add(cm);
+            _context.SaveChanges();
+            return RedirectToAction("index", "home");
+        }
     }
 }

@@ -12,9 +12,7 @@ namespace BackEndProject.Models
         [Required]
         [StringLength(maximumLength: 500)]
         public string Message { get; set; }
-        public DateTime CreatedTime { get; set; }
-
-        public string AppUserId { get; set; }
-        public AppUser AppUser { get; set; }
+        public string Email { get; set; }
+        public DateTime SendDate { get; set; }
     }
 }

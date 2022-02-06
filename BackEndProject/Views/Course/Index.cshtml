@@ -30,16 +30,14 @@
                 </div>
                 <div class="course-form">
                     <form asp-action="index" asp-controller="course" method="get">
-                        <input type="search" placeholder="Search..." name="keyword"  id="Course-Search" />
+                        <input type="search" placeholder="Search..." name="keyword" id="Course-Search" />
                         <button type="submit">search</button>
                     </form>
-
                 </div>
             </div>
             @if (Model.Courses.Count == 0)
             {
                 <div style="color:red;font-size:50px">No result</div>
-
             }
         </div>
         <div class="row" id="Old-Courses">
@@ -48,9 +46,7 @@
         <div class="row" id="New-Courses">
         </div>
     </div>
-    @if (Model.Courses.Count != 0)
-    {
-        <div id="myPager" class="container">
+        <div id="myPager" style="display:flex;justify-content:start" class="container pagin">
             <div class="row justify-content-center mt-4">
                 <nav aria-label="...">
                     <ul class="pagination" style="justify-content:center">
@@ -71,12 +67,6 @@
                 </nav>
             </div>
         </div>
-
-    }
-    else
-    {
-        <span></span>
-    }
 </div>
 <!-- Course End -->
 <!-- Subscribe Start -->
@@ -113,33 +103,32 @@
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script>
-            $(document).on('keyup', `#Course-Search`, function () {
+    <script>
+        $(document).on('keyup', `#Course-Search`, function () {
 
-                $("#New-Courses").empty()
-                if ($(this).val().length > 0) {
-                    $.ajax({
-                        url: `/Course/Search`,
-                        data: {
-                            "search": $(this).val(),
-                        },
-                        type: "Get",
-                        success: function (res) {
+            $("#New-Courses").empty()
+            if ($(this).val().length > 0) {
+                $.ajax({
+                    url: `/Course/Search`,
+                    data: {
+                        "search": $(this).val(),
+                    },
+                    type: "Get",
+                    success: function (res) {
 
-                            $("#Old-Courses").css("display", "none")
+                        $("#Old-Courses").css("display", "none")
 
-                            $("#New-Courses").append(res)
+                        $("#New-Courses").append(res)
+                        $(".pagin").css("display","none")
+                    }
+                })
+            }
+            else {
+                $("#Old-Courses").css("display", "block")
+                $(".pagin").css("display", "flex")
+            }
 
-                        }
-                    })
-                }
-                else {
-                    $("#Old-Courses").css("display", "block")
-
-                }
-
-            })
-        </script>
-    }
+        })
+    </script>
 }
 <!-- Subscribe End -->

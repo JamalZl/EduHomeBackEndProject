@@ -5,8 +5,6 @@
 @{
     var controller = ViewContext.RouteData.Values["controller"].ToString();
 }
-
-<!-- Banner Area Start -->
 <div class="banner-area-wrapper">
     <div class="banner-area text-center">
         <div class="container">
@@ -28,57 +26,54 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <div class="row">
+                <div class="row" id="OldLogs">
                     @await Html.PartialAsync("_BlogPartialView", Model)
                 </div>
-                @if (Model.Count != 0)
-                {
-                    <nav style="display:flex;justify-content:start" aria-label="...">
-                        <div>
-                            <ul class="pagination" style="justify-content:center">
+                <div class="row" id="Newlogs">
 
-                                <li class="page-item @(ViewBag.Currentpage == 1 ? "disabled" : "")">
-                                    <a class="page-link" asp-controller="blog" asp-action="index" asp-route-page="@(ViewBag.CurrentPage-1)">Previous</a>
-                                </li>
-
-                                @for (int i = 1; i <= ViewBag.TotalPage; i++)
-                                {
-                                    <li class="page-item  @(ViewBag.CurrentPage == i ? "active" : "")" style="pointer-events: @(ViewBag.CurrentPage == i ? "none" : "")"><a class="page-link" asp-controller="blog" asp-action="index" asp-route-page="@i">@i</a></li>
-                                }
-
-                                <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPage ? "disabled" : "")">
-                                    <a class="page-link" asp-controller="blog" asp-action="index" asp-route-page="@(ViewBag.CurrentPage +1)">Next</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-
-                }
-                else
-                {
-                    <span></span>
-                }
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="blog-sidebar right">
                     <div class="single-blog-widget mb-50">
                         <h3>search</h3>
                         <div class="blog-search">
-                            <form asp-controller="blog" asp-action="index" method="get" id="search">
-                                <input type="search" placeholder="Search..." name="keyword" />
+                            <form asp-controller="blog" asp-action="index" method="get">
+                                <input type="search" placeholder="Search..." name="keyword" id="searchBloog" />
                                 <button type="submit">
                                     <span><i class="fa fa-search"></i></span>
                                 </button>
                             </form>
                         </div>
-                    </div> @if (Model.Count == 0)
+
+                    </div>
+                    @if (Model.Count == 0)
                     {
                         <div style="color:red;font-size:50px">No result</div>
-
                     }
                 </div>
             </div>
+
         </div>
+        <nav id="mypager" class="pagin" style="display:flex;justify-content:start" aria-label="...">
+            <div>
+                <ul class="pagination" style="justify-content:center">
+
+                    <li class="page-item @(ViewBag.Currentpage == 1 ? "disabled" : "")">
+                        <a class="page-link" asp-controller="blog" asp-action="index" asp-route-page="@(ViewBag.CurrentPage-1)">Previous</a>
+                    </li>
+
+                    @for (int i = 1; i <= ViewBag.TotalPage; i++)
+                    {
+                        <li class="page-item  @(ViewBag.CurrentPage == i ? "active" : "")" style="pointer-events: @(ViewBag.CurrentPage == i ? "none" : "")"><a class="page-link" asp-controller="blog" asp-action="index" asp-route-page="@i">@i</a></li>
+                    }
+
+                    <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPage ? "disabled" : "")">
+                        <a class="page-link" asp-controller="blog" asp-action="index" asp-route-page="@(ViewBag.CurrentPage +1)">Next</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
 </div>
 <!-- Blog End -->
@@ -112,4 +107,34 @@
         </div>
     </div>
 </div>
-<!-- Subscribe End -->
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).on('keyup', `#searchBloog`, function () {
+
+            $("#Newlogs").empty()
+            if ($(this).val().length > 0) {
+                $.ajax({
+                    url: `/Blog/Search`,
+                    data: {
+                        "search": $(this).val(),
+                    },
+                    type: "Get",
+                    success: function (res) {
+
+                        $("#OldLogs").css("display", "none")
+
+                        $("#Newlogs").append(res)
+                        $("#pagin").css("display", "none");
+                    }
+                })
+            }
+            else {
+                $(".OldLogs").css("display", "block")
+                $(".pagin").css("display", "flex");
+
+            }
+        })
+    </script>
+}

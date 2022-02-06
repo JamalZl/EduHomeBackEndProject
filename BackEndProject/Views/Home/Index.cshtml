@@ -211,7 +211,6 @@
 <!-- Subscribe End -->
 @section Scripts{
     <script>
-        $(document).ready(function () {
             if ($("#forgotJS").length) {
                 Command: toastr["success"]("Link has been sent to your email")
                 toastr.options = {
@@ -253,7 +252,7 @@
                 }
             }
             if ($("#verifyJS").length) {
-                Command: toastr["success"]("Please verify your email")
+                Command: toastr["warning"]("Email verification link has been sent to your email address.Please verify your email")
 
                 toastr.options = {
                     "closeButton": false,
@@ -294,6 +293,6 @@
                     "hideMethod": "fadeOut"
                 }
             }
-        }
+        
     </script>
 }

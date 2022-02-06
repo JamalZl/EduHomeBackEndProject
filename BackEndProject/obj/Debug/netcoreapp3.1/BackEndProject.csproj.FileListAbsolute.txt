@@ -223,3 +223,5 @@ C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcorea
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\Search.cshtml.g.cs
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
 C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UserManagment\Index.cshtml.g.cs
+C:\Users\User\Documents\BackEnd\BackEndProject\BackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ContactMessage\Index.cshtml.g.cs

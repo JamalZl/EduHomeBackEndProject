@@ -44,6 +44,9 @@ namespace BackEndProject
                 option.Lockout.AllowedForNewUsers = true;
                 option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
                 option.Lockout.MaxFailedAccessAttempts = 5;
+
+                option.SignIn.RequireConfirmedEmail = true;
+                option.User.RequireUniqueEmail = true;
             }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
 
             }

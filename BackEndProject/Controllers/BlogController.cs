@@ -37,7 +37,6 @@ namespace BackEndProject.Controllers
                 if (!blogs.Any(f => f.Title.Contains(keyword)))
                 {
                     ModelState.AddModelError("", "No result");
-                    return View(blogs);
                 }
                 return View(blogs);
             }
@@ -52,6 +51,12 @@ namespace BackEndProject.Controllers
             List<Comment> comments = _context.Comments.Include(c => c.Blog).Include(c => c.AppUser).Where(c => c.BlogId == id).ToList();
             if (blog == null) return NotFound();
             return View(blog);
+        }
+
+        public IActionResult Search(string search)
+        {
+            List<Blog> blogs = _context.Blogs.Where(b => b.Title.ToLower().Trim().Contains(search.ToLower().Trim())).ToList();
+            return PartialView("_BlogPartialView", blogs);
         }
         [Authorize]
         [HttpPost]

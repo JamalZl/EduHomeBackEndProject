@@ -65,102 +65,6 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item dropdown me-1">
-                        <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-bs-toggle="dropdown">
-                            <i class="mdi mdi-message-text mx-0"></i>
-                            <span class="count"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
-                            <a class="dropdown-item">
-                                <div class="item-thumbnail">
-                                    <img src="~/admin/assets/images/faces/face4.jpg" alt="image" class="profile-pic">
-                                </div>
-                                <div class="item-content flex-grow">
-                                    <h6 class="ellipsis font-weight-normal">
-                                        David Grey
-                                    </h6>
-                                    <p class="font-weight-light small-text text-muted mb-0">
-                                        The meeting is cancelled
-                                    </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="item-thumbnail">
-                                    <img src="~/admin/assets/images/faces/face2.jpg" alt="image" class="profile-pic">
-                                </div>
-                                <div class="item-content flex-grow">
-                                    <h6 class="ellipsis font-weight-normal">
-                                        Tim Cook
-                                    </h6>
-                                    <p class="font-weight-light small-text text-muted mb-0">
-                                        New product launch
-                                    </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="item-thumbnail">
-                                    <img src="~/admin/assets/images/faces/face3.jpg" alt="image" class="profile-pic">
-                                </div>
-                                <div class="item-content flex-grow">
-                                    <h6 class="ellipsis font-weight-normal">
-                                        Johnson
-                                    </h6>
-                                    <p class="font-weight-light small-text text-muted mb-0">
-                                        Upcoming board meeting
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown me-4">
-                        <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center notification-dropdown" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-                            <i class="mdi mdi-bell mx-0"></i>
-                            <span class="count"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-                            <a class="dropdown-item">
-                                <div class="item-thumbnail">
-                                    <div class="item-icon bg-success">
-                                        <i class="mdi mdi-information mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="item-content">
-                                    <h6 class="font-weight-normal">Application Error</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted">
-                                        Just now
-                                    </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="item-thumbnail">
-                                    <div class="item-icon bg-warning">
-                                        <i class="mdi mdi-settings mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="item-content">
-                                    <h6 class="font-weight-normal">Settings</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted">
-                                        Private message
-                                    </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="item-thumbnail">
-                                    <div class="item-icon bg-info">
-                                        <i class="mdi mdi-account-box mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="item-content">
-                                    <h6 class="font-weight-normal">New user registration</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted">
-                                        2 days ago
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
                             <img src="~/admin/assets/images/faces/face5.jpg" alt="profile" />
@@ -198,73 +102,73 @@
                                         <span class="menu-title">Dashboard</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="slider" asp-action="index" class="nav-link">
                                         <i class="fas fa-sliders-h"></i>
                                         <span class="menu-title mx-4">Slider</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="setting" asp-action="index" class="nav-link">
                                         <i class="mdi mdi-settings"></i>
                                         <span class="menu-title mx-4">Setting</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="tag" asp-action="index" class="nav-link">
                                         <i class="mdi mdi-tag"></i>
                                         <span class="menu-title mx-4">Tag</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="category" asp-action="index" class="nav-link">
                                         <i class="mdi mdi-book-open-variant"></i>
                                         <span class="menu-title mx-4">Category</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="course" asp-action="index" class="nav-link">
                                         <i class="mdi mdi-home-modern"></i>
                                         <span class="menu-title mx-4">Course</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="hobby" asp-action="index" class="nav-link">
                                         <i class="mdi mdi-heart-box-outline"></i>
                                         <span class="menu-title mx-4">Hobby</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="skill" asp-action="index" class="nav-link">
                                         <i class="mdi mdi-white-balance-iridescent"></i>
                                         <span class="menu-title mx-4">Skill</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="faculty" asp-action="index" class="nav-link">
                                         <i class="mdi mdi-file-document-box"></i>
                                         <span class="menu-title mx-4">Faculty</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="position" asp-action="index" class="nav-link">
                                         <i class="mdi mdi-professional-hexagon"></i>
                                         <span class="menu-title mx-4">Position</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="teacher" asp-action="index" class="nav-link">
                                         <i class="fas fa-chalkboard-teacher"></i>
                                         <span class="menu-title mx-4">Teacher</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="blog" asp-action="index" class="nav-link">
                                         <i class="mdi mdi-blogger"></i>
                                         <span class="menu-title mx-4">Blog</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="speaker" asp-action="index" class="nav-link">
                                         <i class="fas fa-user-tie"></i>
                                         <span class="menu-title mx-4">Speaker</span>
@@ -276,16 +180,28 @@
                                         <span class="menu-title mx-4">Event</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="company" asp-action="index" class="nav-link">
                                         <i class="fas fa-building"></i>
                                         <span class="menu-title mx-4">Company</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
                                     <a asp-controller="noticeboard" asp-action="index" class="nav-link">
                                         <i class="fas fa-chalkboard"></i>
                                         <span class="menu-title mx-4">Notice Board</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="usermanagment" asp-action="index" class="nav-link">
+                                        <i class="fas fa-users"></i>
+                                        <span class="menu-title mx-4">User Status</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="contactmessage" asp-action="index" class="nav-link">
+                                        <i class="fas fa-envelope"></i>
+                                        <span class="menu-title mx-4">Contact Messages</span>
                                     </a>
                                 </li>
                             </ul>

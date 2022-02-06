@@ -24,8 +24,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <div class="row">
+                <div class="row" id="Old-Events">
                     @await Html.PartialAsync("_EventPartialView", Model)
+                </div>
+                <div class="row" id="New-Events">
                 </div>
             </div>
             <div class="col-md-4">
@@ -33,8 +35,8 @@
                     <div class="single-blog-widget mb-50">
                         <h3>search</h3>
                         <div class="blog-search">
-                            <form asp-controller="event" asp-action="index" method="get" id="search">
-                                <input type="search" placeholder="Search..." name="keyword" />
+                            <form asp-controller="event" asp-action="index" method="get">
+                                <input type="search" placeholder="Search..." name="keyword" id="EventSearch" />
                                 <button type="submit">
                                     <span><i class="fa fa-search"></i></span>
                                 </button>
@@ -52,9 +54,8 @@
             </div>
         </div>
 
-        @if (Model.Count != 0)
-        {
-            <nav style="display:flex;justify-content:start" aria-label="...">
+        
+            <nav id="myPager" class="pagin" style="display:flex;justify-content:start" aria-label="...">
                 <div>
                     <ul class="pagination" style="justify-content:center">
 
@@ -73,11 +74,6 @@
                     </ul>
                 </div>
             </nav>
-        }
-        else
-        {
-            <span></span>
-        }
     </div>
 </div>
 <!-- Blog End -->
@@ -112,3 +108,34 @@
     </div>
 </div>
 <!-- Subscribe End -->
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).on('keyup', `#EventSearch`, function () {
+
+            $("#New-Events").empty()
+            if ($(this).val().length > 0) {
+                $.ajax({
+                    url: `/Event/Search`,
+                    data: {
+                        "search": $(this).val(),
+                    },
+                    type: "Get",
+                    success: function (res) {
+
+                        $("#Old-Events").css("display", "none")
+
+                        $("#New-Events").append(res)
+                        $(".pagin").css("display","none")
+                    }
+                })
+            }
+            else {
+                $("#Old-Events").css("display", "block")
+                $(".pagin").css("display", "flex")
+            }
+
+        })
+    </script>
+}

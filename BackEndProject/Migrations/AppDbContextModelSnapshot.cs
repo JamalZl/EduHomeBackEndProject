@@ -205,20 +205,18 @@ namespace BackEndProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedTime")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnType("nvarchar(500)")
                         .HasMaxLength(500);
 
-                    b.HasKey("Id");
+                    b.Property<DateTime>("SendDate")
+                        .HasColumnType("datetime2");
 
-                    b.HasIndex("AppUserId");
+                    b.HasKey("Id");
 
                     b.ToTable("ContactMessages");
                 });
@@ -942,13 +940,6 @@ namespace BackEndProject.Migrations
                     b.HasOne("BackEndProject.Models.Event", "Event")
                         .WithMany("Comments")
                         .HasForeignKey("EventId");
-                });
-
-            modelBuilder.Entity("BackEndProject.Models.ContactMessage", b =>
-                {
-                    b.HasOne("BackEndProject.Models.AppUser", "AppUser")
-                        .WithMany("ContactMessages")
-                        .HasForeignKey("AppUserId");
                 });
 
             modelBuilder.Entity("BackEndProject.Models.Course", b =>

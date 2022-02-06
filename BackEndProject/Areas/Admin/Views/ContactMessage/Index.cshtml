@@ -1,0 +1,75 @@
+﻿@model List<ContactMessage>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <table class="mt-3 table table-dark">
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Message
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Delete
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ContactMessage cm in Model)
+            {
+            <tr>
+                <td>
+                    @cm.Id
+                </td>
+                <td>
+                    @cm.Email
+                </td>
+                <td>
+                    @cm.Message
+                </td>
+                <td>
+                    @cm.SendDate.ToString("dddd, dd MMMM yyyy HH:mm")
+                </td>
+                <td>
+                    <a style="text-decoration:none;" class="delete-item" asp-controller="contactmessage" asp-action="delete" asp-route-id="@cm.Id">
+                        <i style="color: red; font-size: 40px;" class="mdi mdi-delete-forever "></i>
+                    </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row justify-content-center mt-4">
+        <nav aria-label="...">
+            <ul class="pagination" style="justify-content:center">
+
+                <li class="page-item @(ViewBag.Currentpage == 1 ? "disabled" : "")">
+                    <a class="page-link" asp-controller="contactmessage" asp-action="index" asp-route-page="@(ViewBag.CurrentPage-1)">Previous</a>
+                </li>
+
+                @for (int i = 1; i <= ViewBag.TotalPage; i++)
+                {
+                    <li class="page-item  @(ViewBag.CurrentPage == i ? "active" : "")" style="pointer-events: @(ViewBag.CurrentPage == i ? "none" : "")"><a class="page-link" asp-controller="contactmessage" asp-action="index" asp-route-page="@i">@i</a></li>
+                }
+
+                <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPage ? "disabled" : "")">
+                    <a class="page-link" asp-controller="contactmessage" asp-action="index" asp-route-page="@(ViewBag.CurrentPage +1)">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+
+

@@ -32,10 +32,12 @@
     <td>@comment.AppUser.UserName</td>
     @if (@comment.Text.Length < 50)
     {
-<td>@comment.Text</td> }
-                else
-                {
-<td data-toggle="tooltip" data-placement="bottom" title="@comment.Text">@comment.Text.Substring(0, 47) ...</td>}
+<td>@comment.Text</td>
+ }
+else
+{
+<td data-toggle="tooltip" data-placement="bottom" title="@comment.Text">@comment.Text.Substring(0, 47) ...</td>
+}
     <td>@comment.CreatedTime.ToString("dd MMMM yyyy HH:m")</td>
     <td>@comment.IsAccess</td>
     <td>
@@ -52,7 +54,8 @@ else
 
 </a>}
     </td>
-</tr>}
+</tr>
+}
         </tbody>
     </table>
     <div class="d-flex mt-4">

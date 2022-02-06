@@ -34,11 +34,10 @@ namespace BackEndProject.Controllers
             if (!string.IsNullOrEmpty(keyword))
             {
                 
-                List<Event> events = _context.Events.Include(e=>e.EventSpeakers).ThenInclude(es=>es.Speaker).Where(f => f.Name.Contains(keyword)|| f.EventSpeakers.FirstOrDefault().Speaker.Name.Contains(keyword)).ToList();
+                List<Event> events = _context.Events.Include(e=>e.EventSpeakers).ThenInclude(es=>es.Speaker).Where(f => f.Name.Contains(keyword)).ToList();
                 if (!events.Any(f => f.Name.Contains(keyword)))
                 {
                     ModelState.AddModelError("", "No result");
-                    return View(events);
                 }
                 return View(events);
             }
@@ -57,6 +56,11 @@ namespace BackEndProject.Controllers
                 return NotFound();
             }
             return View(eventt);
+        }
+        public IActionResult Search(string search)
+        {
+            List<Event> events = _context.Events.Where(f => f.Name.ToLower().Trim().Contains(search.ToLower().Trim())).ToList();
+            return PartialView("_EventPartialView", events);
         }
         [Authorize]
         [HttpPost]

@@ -65,6 +65,7 @@ namespace BackEndProject.Controllers
             mail.From = new MailAddress("czeynalli00@gmail.com", "EduHome");
             mail.To.Add(new MailAddress(appUser.Email));
 
+
             mail.Subject = "Verify Email";
             string body = string.Empty;
             using (StreamReader reader = new StreamReader("wwwroot/assets/template/verifyemail.html"))
