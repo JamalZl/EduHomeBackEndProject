@@ -55,7 +55,7 @@ namespace BackEndProject.Controllers
 
         public IActionResult Search(string search)
         {
-            List<Blog> blogs = _context.Blogs.Where(b => b.Title.ToLower().Trim().Contains(search.ToLower().Trim())).ToList();
+            List<Blog> blogs = _context.Blogs.Include(b=>b.Comments).Where(b => b.Title.ToLower().Trim().Contains(search.ToLower().Trim())).ToList();
             return PartialView("_BlogPartialView", blogs);
         }
         [Authorize]

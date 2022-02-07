@@ -27,7 +27,7 @@ namespace BackEndProject.Areas.Admin.Controllers
             _roleManager = roleManager;
             _signInResult = signInResult;
         }
-        public IActionResult Index(int page=1)
+        public IActionResult Index(int page = 1)
         {
             ViewBag.TotalPage = Math.Ceiling((decimal)_context.Users.Count() / 5);
             ViewBag.CurrentPage = page;
@@ -40,10 +40,17 @@ namespace BackEndProject.Areas.Admin.Controllers
             if (user.IsAdmin)
             {
                 user.IsAdmin = false;
+                var role = (await _userManager.GetRolesAsync(user))[0];
+                await _userManager.RemoveFromRoleAsync(user, role);
+                await _userManager.AddToRoleAsync(user, "Member");
+
             }
             else
             {
                 user.IsAdmin = true;
+                var role = (await _userManager.GetRolesAsync(user))[0];
+                await _userManager.RemoveFromRoleAsync(user, role);
+                await _userManager.AddToRoleAsync(user, "Admin");
             }
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
